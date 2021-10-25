@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 final buttonWidth = 120.0;
 final buttonHeight = 30.0;
+final buttonPadding = 10.0;
 
 class Welcome extends StatefulWidget {
   @override
@@ -21,33 +22,41 @@ class _WelcomeState extends State<Welcome> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  fixedSize: Size(buttonWidth, buttonHeight),
-                  primary: Colors.green),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Login(),
-                  ),
-                );
-              },
-              child: Text("Login"),
+            Text("If you have an account please press Login"),
+            Padding(
+              padding: EdgeInsets.all(buttonPadding),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    primary: Colors.green),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Login(),
+                    ),
+                  );
+                },
+                child: Text("Login"),
+              ),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  fixedSize: Size(buttonWidth, buttonHeight),
-                  primary: Colors.red),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Register(),
-                  ),
-                );
-              },
-              child: Text("Register"),
+            Text("Or create an account by pressing the Register button."),
+            Padding(
+              padding: EdgeInsets.all(buttonPadding),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    primary: Colors.red),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Register(),
+                    ),
+                  );
+                },
+                child: Text("Register"),
+              ),
             )
           ],
         ),

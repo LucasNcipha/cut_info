@@ -12,6 +12,12 @@ class _LoginState extends State<Login> {
       appBar: AppBar(
         title: Text("Login"),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+            decoration: InputDecoration(labelText: "Student number"),
+            keyboardType: TextInputType.number),
+      ),
     );
   }
 }
