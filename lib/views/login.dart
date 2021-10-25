@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
                           autoLogin = value!;
                         });
                       }),
-                  Text("keep me logged in")
+                  Text("Keep me logged in.")
                 ],
               ),
             ),
