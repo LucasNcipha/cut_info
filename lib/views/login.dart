@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+final buttonWidth = 180.0;
+final buttonHeight = 50.0;
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -11,16 +14,19 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.lightBlue,
         title: Text("Login"),
       ),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 40, bottom: 20),
             child: Text(
-              "Please type your student number and password.",
+              "Please Enter your student number and password ",
               textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
           Padding(
@@ -41,7 +47,8 @@ class _LoginState extends State<Login> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Checkbox(
                       value: autoLogin,
@@ -50,7 +57,7 @@ class _LoginState extends State<Login> {
                           autoLogin = value!;
                         });
                       }),
-                  Text("Keep me logged in.")
+                  Text("Keep me logged in")
                 ],
               ),
             ),
@@ -58,10 +65,16 @@ class _LoginState extends State<Login> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  fixedSize: Size(buttonWidth, buttonHeight),
+                  primary: Colors.lightBlue),
               onPressed: () {},
-              child: Text("Login"),
+              child: Text(
+                "Login",
+                style: TextStyle(color: Colors.black),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
