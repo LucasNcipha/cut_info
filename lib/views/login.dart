@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:backendless_sdk/backendless_sdk.dart';
 
 final buttonWidth = 180.0;
 final buttonHeight = 50.0;
+
+const String APPLICATION_ID = "61B0CDD4-057B-F5CD-FFF8-3EFAA2EF6600";
+const String ANDROID_API_KEY = "970C0F8A-D381-4CFB-BFB1-FD69BB01B5C7";
+const String IOS_API_KEY = "03DD9078-DEDD-498E-9470-D022099FDF22";
 
 class Login extends StatefulWidget {
   @override
@@ -11,6 +17,16 @@ class Login extends StatefulWidget {
 bool autoLogin = false;
 
 class _LoginState extends State<Login> {
+  @override
+  void initState() {
+    super.initState();
+    Backendless.initApp(
+      applicationId: APPLICATION_ID,
+      androidApiKey: ANDROID_API_KEY,
+      iosApiKey: IOS_API_KEY,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +85,15 @@ class _LoginState extends State<Login> {
                 style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                     primary: Colors.lightBlue),
-                onPressed: () {},
+                onPressed: () {
+                  //Test Backendless///////////////////////////////////////////////////////
+                  Map testObject = new Map();
+                  testObject["foo"] = "bar";
+                  Backendless.data.of("TestTable").save(testObject).then(
+                      (response) => print(
+                          "Object is saved in Backendless. Please check in the console."));
+                  /////////////////////////////////////////////////////////////////////////
+                },
                 child: Text(
                   "Login",
                   style: TextStyle(color: Colors.black),
