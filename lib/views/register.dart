@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 final buttonWidth = 210.0;
 final buttonHeight = 60.0;
 
+var name;
+var surname;
+var studentNumber;
+var course;
+var year;
+var password;
+
 class Register extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -19,7 +26,7 @@ class _LoginState extends State<Register> {
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(
-            padding: const EdgeInsets.only(top: 40, bottom: 40),
+            padding: const EdgeInsets.only(top: 30, bottom: 20),
             child: Center(
               child: Text(
                 "Welcome! ",
@@ -32,7 +39,7 @@ class _LoginState extends State<Register> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 30),
+            padding: const EdgeInsets.only(bottom: 20),
             child: Center(
               child: Text(
                 "Lets get you started ",
@@ -45,22 +52,50 @@ class _LoginState extends State<Register> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(6.0),
             child: TextField(
-              decoration:
-                  InputDecoration(hintText: "Enter your student/staff number "),
+              decoration: InputDecoration(hintText: "Enter your Name"),
               keyboardType: TextInputType.number,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(6.0),
+            child: TextField(
+              decoration: InputDecoration(hintText: "Enter your Surname"),
+              obscureText: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: TextField(
+              decoration:
+                  InputDecoration(hintText: "Enter your student Number"),
+              obscureText: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: TextField(
+              decoration: InputDecoration(hintText: "Enter your Course"),
+              obscureText: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: TextField(
+              decoration: InputDecoration(hintText: "Enter your year of study"),
+              obscureText: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(6.0),
             child: TextField(
               decoration: InputDecoration(hintText: "Enter password"),
               obscureText: true,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(6.0),
             child: TextField(
               decoration: InputDecoration(hintText: "Confirm password"),
               obscureText: true,
