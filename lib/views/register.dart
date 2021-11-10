@@ -26,19 +26,6 @@ class Register extends StatefulWidget {
 
 class _LoginState extends State<Register> {
   @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    nameController.dispose();
-    surnameController.dispose();
-    studentNumberController.dispose();
-    courseController.dispose();
-    yearController.dispose();
-    passwordController.dispose();
-    passwordConfirmController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
