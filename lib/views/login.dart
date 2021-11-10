@@ -1,3 +1,4 @@
+import 'package:cut_info/views/mainChat.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:backendless_sdk/backendless_sdk.dart';
@@ -98,12 +99,18 @@ class _LoginState extends State<Login> {
                       fixedSize: Size(buttonWidth, buttonHeight),
                       primary: Colors.lightBlue),
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => mainChat(),
+                      ),
+                    );
                     //Test Backendless///////////////////////////////////////////////////////
-                    Map testObject = new Map();
+                    /* Map testObject = new Map();
                     testObject["foo"] = "bar";
                     Backendless.data.of("TestTable").save(testObject).then(
                         (response) => print(
-                            "Object is saved in Backendless. Please check in the console."));
+                            "Object is saved in Backendless. Please check in the console.")); */
                     /////////////////////////////////////////////////////////////////////////
                   },
                   child: Text(
