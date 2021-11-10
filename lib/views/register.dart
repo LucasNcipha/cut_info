@@ -9,6 +9,15 @@ var studentNumber;
 var course;
 var year;
 var password;
+var passwordConfirm;
+
+final nameController = TextEditingController();
+final surnameController = TextEditingController();
+final studentNumberController = TextEditingController();
+final courseController = TextEditingController();
+final yearController = TextEditingController();
+final passwordController = TextEditingController();
+final passwordConfirmController = TextEditingController();
 
 class Register extends StatefulWidget {
   @override
@@ -67,12 +76,14 @@ class _LoginState extends State<Register> {
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration: InputDecoration(hintText: "Enter your Name"),
+                controller: nameController,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration: InputDecoration(hintText: "Enter your Surname"),
+                controller: surnameController,
               ),
             ),
             Padding(
@@ -81,12 +92,14 @@ class _LoginState extends State<Register> {
                 decoration:
                     InputDecoration(hintText: "Enter your student Number"),
                 keyboardType: TextInputType.number,
+                controller: studentNumberController,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration: InputDecoration(hintText: "Enter your Course"),
+                controller: courseController,
               ),
             ),
             Padding(
@@ -95,12 +108,14 @@ class _LoginState extends State<Register> {
                 decoration:
                     InputDecoration(hintText: "Enter your year of study"),
                 keyboardType: TextInputType.number,
+                controller: yearController,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration: InputDecoration(hintText: "Enter password"),
+                controller: passwordController,
                 obscureText: true,
               ),
             ),
@@ -109,6 +124,7 @@ class _LoginState extends State<Register> {
               child: TextField(
                 decoration: InputDecoration(hintText: "Confirm password"),
                 obscureText: true,
+                controller: passwordConfirmController,
               ),
             ),
             Padding(
@@ -117,7 +133,33 @@ class _LoginState extends State<Register> {
                 style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                     primary: Colors.lightBlue),
-                onPressed: () {},
+                onPressed: () {
+                  name = nameController.text;
+                  surname = surnameController.text;
+                  studentNumber = studentNumberController.text;
+                  course = courseController.text;
+                  year = yearController.text;
+                  password = passwordController.text;
+                  passwordConfirm = passwordConfirmController.text;
+
+                  var snackBar;
+                  if (name == "" ||
+                      surname == "" ||
+                      studentNumber == "" ||
+                      course == "" ||
+                      year == null ||
+                      password == "" ||
+                      passwordConfirm == "") {
+                    snackBar = SnackBar(
+                        content: Text('Please fill in all the fields!'));
+                  } else if (password == passwordConfirm) {
+                  } else {
+                    snackBar = SnackBar(
+                        content: Text(
+                            'Password and Confirm password does not match!'));
+                  }
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
                 child: Text(
                   "Register",
                   style: TextStyle(color: Colors.black),
