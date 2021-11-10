@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class mainChat extends StatefulWidget {
-  const mainChat({Key? key}) : super(key: key);
+class MainChat extends StatefulWidget {
+  const MainChat({Key? key}) : super(key: key);
 
   @override
-  State<mainChat> createState() => _mainChatState();
+  State<MainChat> createState() => _MainChatState();
 }
 
-class _mainChatState extends State<mainChat> {
+class _MainChatState extends State<MainChat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
