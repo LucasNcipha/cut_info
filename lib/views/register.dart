@@ -67,14 +67,12 @@ class _LoginState extends State<Register> {
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration: InputDecoration(hintText: "Enter your Name"),
-                obscureText: true,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration: InputDecoration(hintText: "Enter your Surname"),
-                obscureText: true,
               ),
             ),
             Padding(
@@ -89,7 +87,6 @@ class _LoginState extends State<Register> {
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration: InputDecoration(hintText: "Enter your Course"),
-                obscureText: true,
               ),
             ),
             Padding(
