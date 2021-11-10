@@ -30,77 +30,90 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
         title: Text("Login"),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 40, bottom: 20),
-              child: Text(
-                "Please Enter your student number and password ",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                decoration: InputDecoration(hintText: "Student Number"),
-                keyboardType: TextInputType.number,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                decoration: InputDecoration(hintText: "Password"),
-                obscureText: true,
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Checkbox(
-                        value: autoLogin,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            autoLogin = value!;
-                          });
-                        }),
-                    Text("Keep me logged in")
-                  ],
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.blue.shade700, Colors.lightBlue.shade50])),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Image(
+                  image: AssetImage('assets/logo.png'),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    fixedSize: Size(buttonWidth, buttonHeight),
-                    primary: Colors.lightBlue),
-                onPressed: () {
-                  //Test Backendless///////////////////////////////////////////////////////
-                  Map testObject = new Map();
-                  testObject["foo"] = "bar";
-                  Backendless.data.of("TestTable").save(testObject).then(
-                      (response) => print(
-                          "Object is saved in Backendless. Please check in the console."));
-                  /////////////////////////////////////////////////////////////////////////
-                },
+              Padding(
+                padding: const EdgeInsets.only(top: 40, bottom: 20),
                 child: Text(
-                  "Login",
-                  style: TextStyle(color: Colors.black),
+                  "Please Enter your student number and password ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  decoration: InputDecoration(hintText: "Student Number"),
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  decoration: InputDecoration(hintText: "Password"),
+                  obscureText: true,
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Checkbox(
+                          value: autoLogin,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              autoLogin = value!;
+                            });
+                          }),
+                      Text("Keep me logged in")
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: Size(buttonWidth, buttonHeight),
+                      primary: Colors.lightBlue),
+                  onPressed: () {
+                    //Test Backendless///////////////////////////////////////////////////////
+                    Map testObject = new Map();
+                    testObject["foo"] = "bar";
+                    Backendless.data.of("TestTable").save(testObject).then(
+                        (response) => print(
+                            "Object is saved in Backendless. Please check in the console."));
+                    /////////////////////////////////////////////////////////////////////////
+                  },
+                  child: Text(
+                    "Login",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

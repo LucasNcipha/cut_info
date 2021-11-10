@@ -18,46 +18,70 @@ class _WelcomeState extends State<Welcome> {
       appBar: AppBar(
         title: Text("Welcome"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.blue.shade700, Colors.lightBlue.shade50])),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("If you have an account please press Login"),
-            Padding(
-              padding: EdgeInsets.all(buttonPadding),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    fixedSize: Size(buttonWidth, buttonHeight),
-                    primary: Colors.green),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Login(),
-                    ),
-                  );
-                },
-                child: Text("Login"),
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 60),
+                  child: Image(
+                    image: AssetImage('assets/logo.png'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Text('Welcome',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w800, fontSize: 25)),
+                ),
+                Text("If you have an account please Login"),
+                Padding(
+                  padding: EdgeInsets.all(buttonPadding),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size(buttonWidth, buttonHeight),
+                        primary: Colors.green),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ),
+                      );
+                    },
+                    child: Text("Login"),
+                  ),
+                ),
+                Text("Or create an account by pressing the Register button."),
+                Padding(
+                  padding: EdgeInsets.all(buttonPadding),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size(buttonWidth, buttonHeight),
+                        primary: Colors.red),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Register(),
+                        ),
+                      );
+                    },
+                    child: Text("Register"),
+                  ),
+                )
+              ],
             ),
-            Text("Or create an account by pressing the Register button."),
-            Padding(
-              padding: EdgeInsets.all(buttonPadding),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    fixedSize: Size(buttonWidth, buttonHeight),
-                    primary: Colors.red),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Register(),
-                    ),
-                  );
-                },
-                child: Text("Register"),
-              ),
-            )
           ],
         ),
       ),
