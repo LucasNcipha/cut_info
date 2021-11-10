@@ -105,13 +105,6 @@ class _LoginState extends State<Login> {
                         builder: (context) => MainChat(),
                       ),
                     );
-                    //Test Backendless///////////////////////////////////////////////////////
-                    /* Map testObject = new Map();
-                    testObject["foo"] = "bar";
-                    Backendless.data.of("TestTable").save(testObject).then(
-                        (response) => print(
-                            "Object is saved in Backendless. Please check in the console.")); */
-                    /////////////////////////////////////////////////////////////////////////
                   },
                   child: Text(
                     "Login",
