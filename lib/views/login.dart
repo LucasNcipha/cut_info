@@ -1,4 +1,5 @@
 import 'package:cut_info/views/mainChat.dart';
+import 'package:cut_info/views/register.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:backendless_sdk/backendless_sdk.dart';
@@ -32,7 +33,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.lightBlueAccent.shade400,
         title: Text('Login'),
       ),
       body: SingleChildScrollView(
@@ -112,6 +113,33 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(
+                  'Dont have an account yet ? ',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  primary: Colors.lightBlue,
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Register(),
+                    ),
+                  );
+                },
+                child: const Text('Sign up'),
+              )
             ],
           ),
         ),
