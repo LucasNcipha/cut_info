@@ -1,3 +1,4 @@
+import 'package:cut_info/views/login.dart';
 import 'package:flutter/material.dart';
 
 final buttonWidth = 210.0;
@@ -166,14 +167,33 @@ class _LoginState extends State<Register> {
                 ),
               ),
             ),
-            Text(
-              "Already have an account ?Sign in ",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                'Already have an account ? ',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
+            TextButton(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(bottom: 20),
+                primary: Colors.lightBlue,
+                textStyle: const TextStyle(fontSize: 20),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Login(),
+                  ),
+                );
+              },
+              child: const Text('Sign in'),
+            )
           ]),
         ),
       ),
