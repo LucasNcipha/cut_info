@@ -30,7 +30,7 @@ class _LoginState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: Text('Register'),
         backgroundColor: Colors.lightBlue,
       ),
       body: SingleChildScrollView(
@@ -51,7 +51,7 @@ class _LoginState extends State<Register> {
               padding: const EdgeInsets.only(top: 30, bottom: 10),
               child: Center(
                 child: Text(
-                  "Welcome! ",
+                  'Welcome! ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
@@ -64,7 +64,7 @@ class _LoginState extends State<Register> {
               padding: const EdgeInsets.only(bottom: 20),
               child: Center(
                 child: Text(
-                  "Lets get you started ",
+                  'Lets get you started ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
@@ -76,14 +76,14 @@ class _LoginState extends State<Register> {
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
-                decoration: InputDecoration(hintText: "Enter your Name"),
+                decoration: InputDecoration(hintText: 'Enter your Name'),
                 controller: nameController,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
-                decoration: InputDecoration(hintText: "Enter your Surname"),
+                decoration: InputDecoration(hintText: 'Enter your Surname'),
                 controller: surnameController,
               ),
             ),
@@ -91,7 +91,7 @@ class _LoginState extends State<Register> {
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration:
-                    InputDecoration(hintText: "Enter your student Number"),
+                    InputDecoration(hintText: 'Enter your student Number'),
                 keyboardType: TextInputType.number,
                 controller: studentNumberController,
               ),
@@ -99,7 +99,7 @@ class _LoginState extends State<Register> {
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
-                decoration: InputDecoration(hintText: "Enter your Course"),
+                decoration: InputDecoration(hintText: 'Enter your Course'),
                 controller: courseController,
               ),
             ),
@@ -107,7 +107,7 @@ class _LoginState extends State<Register> {
               padding: const EdgeInsets.all(6.0),
               child: TextField(
                 decoration:
-                    InputDecoration(hintText: "Enter your year of study"),
+                    InputDecoration(hintText: 'Enter your year of study'),
                 keyboardType: TextInputType.number,
                 controller: yearController,
               ),
@@ -115,7 +115,7 @@ class _LoginState extends State<Register> {
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
-                decoration: InputDecoration(hintText: "Enter password"),
+                decoration: InputDecoration(hintText: 'Enter password'),
                 controller: passwordController,
                 obscureText: true,
               ),
@@ -123,7 +123,7 @@ class _LoginState extends State<Register> {
             Padding(
               padding: const EdgeInsets.all(6.0),
               child: TextField(
-                decoration: InputDecoration(hintText: "Confirm password"),
+                decoration: InputDecoration(hintText: 'Confirm password'),
                 obscureText: true,
                 controller: passwordConfirmController,
               ),
@@ -162,7 +162,7 @@ class _LoginState extends State<Register> {
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 child: Text(
-                  "Register",
+                  'Register',
                   style: TextStyle(color: Colors.black),
                 ),
               ),

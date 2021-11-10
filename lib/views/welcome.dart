@@ -16,7 +16,7 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Welcome"),
+        title: Text('Welcome'),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -41,7 +41,7 @@ class _WelcomeState extends State<Welcome> {
                       style:
                           TextStyle(fontWeight: FontWeight.w800, fontSize: 25)),
                 ),
-                Text("If you have an account please Login"),
+                Text('If you have an account please Login'),
                 Padding(
                   padding: EdgeInsets.all(buttonPadding),
                   child: ElevatedButton(
@@ -56,10 +56,10 @@ class _WelcomeState extends State<Welcome> {
                         ),
                       );
                     },
-                    child: Text("Login"),
+                    child: Text('Login'),
                   ),
                 ),
-                Text("Or create an account by pressing the Register button."),
+                Text('Or create an account by pressing the Register button.'),
                 Padding(
                   padding: EdgeInsets.all(buttonPadding),
                   child: ElevatedButton(
@@ -74,7 +74,7 @@ class _WelcomeState extends State<Welcome> {
                         ),
                       );
                     },
-                    child: Text("Register"),
+                    child: Text('Register'),
                   ),
                 )
               ],

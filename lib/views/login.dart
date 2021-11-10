@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
-        title: Text("Login"),
+        title: Text('Login'),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -54,7 +54,7 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.only(top: 40, bottom: 20),
                 child: Text(
-                  "Please Enter your student number and password ",
+                  'Please Enter your student number and password ',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
@@ -62,14 +62,14 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  decoration: InputDecoration(hintText: "Student Number"),
+                  decoration: InputDecoration(hintText: 'Student Number'),
                   keyboardType: TextInputType.number,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  decoration: InputDecoration(hintText: "Password"),
+                  decoration: InputDecoration(hintText: 'Password'),
                   obscureText: true,
                 ),
               ),
@@ -87,7 +87,7 @@ class _LoginState extends State<Login> {
                               autoLogin = value!;
                             });
                           }),
-                      Text("Keep me logged in")
+                      Text('Keep me logged in')
                     ],
                   ),
                 ),
@@ -107,7 +107,7 @@ class _LoginState extends State<Login> {
                     );
                   },
                   child: Text(
-                    "Login",
+                    'Login',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),

@@ -14,7 +14,7 @@ class _MainChatState extends State<MainChat> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightBlue,
-          title: Text(" "),
+          title: Text(' '),
         ),
         body: SingleChildScrollView(
             child: Container(
