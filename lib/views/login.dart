@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => mainChat(),
+                        builder: (context) => MainChat(),
                       ),
                     );
                     //Test Backendless///////////////////////////////////////////////////////
