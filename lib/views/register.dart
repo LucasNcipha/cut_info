@@ -135,11 +135,11 @@ class _LoginState extends State<Register> {
                     fixedSize: Size(buttonWidth, buttonHeight),
                     primary: Colors.lightBlue),
                 onPressed: () {
-                  name = nameController.text;
-                  surname = surnameController.text;
-                  studentNumber = studentNumberController.text;
-                  course = courseController.text;
-                  year = yearController.text;
+                  name = nameController.text.trim();
+                  surname = surnameController.text.trim();
+                  studentNumber = studentNumberController.text.trim();
+                  course = courseController.text.trim();
+                  year = yearController.text.trim();
                   password = passwordController.text;
                   passwordConfirm = passwordConfirmController.text;
 
