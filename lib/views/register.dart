@@ -20,6 +20,9 @@ final yearController = TextEditingController();
 final passwordController = TextEditingController();
 final passwordConfirmController = TextEditingController();
 
+var snackBar;
+var showSnack = false;
+
 class Register extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -143,7 +146,6 @@ class _LoginState extends State<Register> {
                   password = passwordController.text;
                   passwordConfirm = passwordConfirmController.text;
 
-                  var snackBar;
                   if (name == "" ||
                       surname == "" ||
                       studentNumber == "" ||
@@ -151,15 +153,19 @@ class _LoginState extends State<Register> {
                       year == null ||
                       password == "" ||
                       passwordConfirm == "") {
+                    showSnack = true;
                     snackBar = SnackBar(
                         content: Text('Please fill in all the fields!'));
                   } else if (password == passwordConfirm) {
+                    showSnack = false;
                   } else {
+                    showSnack = true;
                     snackBar = SnackBar(
                         content: Text(
                             'Password and Confirm password does not match!'));
                   }
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  if (showSnack == true)
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 child: Text(
                   'Register',
