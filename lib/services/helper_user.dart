@@ -8,9 +8,10 @@ import 'package:provider/provider.dart';
 
 void createNewUserInUI(
   BuildContext context, {
-  required String studentNumber,
+  required String email,
   required String name,
   required String surname,
+  required String studentNumber,
   required String course,
   required String year,
   required String password,
@@ -18,7 +19,8 @@ void createNewUserInUI(
 }) async {
   FocusManager.instance.primaryFocus?.unfocus();
 
-  if (name.isEmpty ||
+  if (email.isEmpty ||
+      name.isEmpty ||
       surname.isEmpty ||
       studentNumber.isEmpty ||
       course.isEmpty ||
@@ -36,7 +38,7 @@ void createNewUserInUI(
     );
   } else {
     BackendlessUser user = BackendlessUser()
-      ..email = name.trim()
+      ..email = email.trim()
       ..password = password.trim()
       ..putProperties({
         'name': name.trim(),
