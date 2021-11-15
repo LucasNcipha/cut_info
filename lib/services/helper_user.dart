@@ -29,6 +29,11 @@ void createNewUserInUI(
       context,
       'Please enter all fields!',
     );
+  } else if (password != passwordConfirm) {
+    showSnackBar(
+      context,
+      'Password and Confirm password does not match!',
+    );
   } else {
     BackendlessUser user = BackendlessUser()
       ..email = name.trim()

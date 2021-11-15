@@ -6,14 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
 
-var name;
-var surname;
-var studentNumber;
-var course;
-var year;
-var password;
-var passwordConfirm;
-
 var snackBar;
 var showSnack = false;
 
@@ -62,10 +54,6 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Register'),
-        backgroundColor: Colors.lightBlue,
-      ),
       body: Stack(
         children: [
           Container(
@@ -163,18 +151,6 @@ class _RegisterState extends State<Register> {
                             password: passwordController.text,
                             passwordConfirm: passwordConfirmController.text,
                           );
-
-                          if (password == passwordConfirm) {
-                            showSnack = false;
-                          } else {
-                            showSnack = true;
-                            snackBar = SnackBar(
-                                content: Text(
-                                    'Password and Confirm password does not match!'));
-                          }
-                          if (showSnack == true)
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
                         },
                         child: Text('Register'),
                       ),

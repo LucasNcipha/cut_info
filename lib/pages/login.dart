@@ -40,10 +40,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent.shade400,
-        title: Text('Login'),
-      ),
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
@@ -131,7 +127,9 @@ class _LoginState extends State<Login> {
                   primary: Colors.lightBlue,
                   textStyle: const TextStyle(fontSize: 20),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(RouteManager.registerPage);
+                },
                 child: const Text('Sign up'),
               ),
               Selector<UserService, Tuple2>(

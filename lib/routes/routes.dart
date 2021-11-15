@@ -1,7 +1,7 @@
 import 'package:cut_info/pages/loading.dart';
 import 'package:cut_info/pages/todo_page.dart';
-import 'package:cut_info/views/login.dart';
-import 'package:cut_info/views/register.dart';
+import 'package:cut_info/pages/login.dart';
+import 'package:cut_info/pages/register.dart';
 import 'package:flutter/material.dart';
 
 class RouteManager {
