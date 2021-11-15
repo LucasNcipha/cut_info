@@ -1,31 +1,40 @@
-import 'package:cut_info/views/mainChat.dart';
-import 'package:cut_info/views/register.dart';
+import 'package:cut_info/routes/routes.dart';
+import 'package:cut_info/services/helper_user.dart';
+import 'package:cut_info/services/user_service.dart';
+import 'package:cut_info/widgets/app_progress_indicator.dart';
+import 'package:cut_info/widgets/app_textfield.dart';
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:backendless_sdk/backendless_sdk.dart';
+import 'package:provider/provider.dart';
+import 'package:tuple/tuple.dart';
 
 final buttonWidth = 180.0;
 final buttonHeight = 50.0;
+
 bool autoLogin = false;
 
-const String APPLICATION_ID = "61B0CDD4-057B-F5CD-FFF8-3EFAA2EF6600";
-const String ANDROID_API_KEY = "970C0F8A-D381-4CFB-BFB1-FD69BB01B5C7";
-const String IOS_API_KEY = "03DD9078-DEDD-498E-9470-D022099FDF22";
-
 class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+  late TextEditingController usernameController;
+  late TextEditingController passwordController;
+
   @override
   void initState() {
     super.initState();
-    Backendless.initApp(
-      applicationId: APPLICATION_ID,
-      androidApiKey: ANDROID_API_KEY,
-      iosApiKey: IOS_API_KEY,
-    );
+    usernameController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -98,14 +107,7 @@ class _LoginState extends State<Login> {
                   style: ElevatedButton.styleFrom(
                       fixedSize: Size(buttonWidth, buttonHeight),
                       primary: Colors.lightBlue),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainChat(),
-                      ),
-                    );
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Login',
                     style: TextStyle(color: Colors.black),
@@ -129,16 +131,18 @@ class _LoginState extends State<Login> {
                   primary: Colors.lightBlue,
                   textStyle: const TextStyle(fontSize: 20),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Register(),
-                    ),
-                  );
-                },
+                onPressed: () {},
                 child: const Text('Sign up'),
-              )
+              ),
+              Selector<UserService, Tuple2>(
+                selector: (context, value) =>
+                    Tuple2(value.showUserProgress, value.userProgressText),
+                builder: (context, value, child) {
+                  return value.item1
+                      ? AppProgressIndicator(text: '${value.item2}')
+                      : Container();
+                },
+              ),
             ],
           ),
         ),
