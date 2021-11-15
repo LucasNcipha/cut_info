@@ -43,6 +43,9 @@ void createNewUserInUI(
       ..putProperties({
         'name': name.trim(),
         'studentNumber': studentNumber.trim(),
+        'surname': surname.trim(),
+        'course': course.trim(),
+        'year': year.trim()
       });
 
     String result = await context.read<UserService>().createUser(user);
