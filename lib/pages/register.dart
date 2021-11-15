@@ -6,9 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
 
-var snackBar;
-var showSnack = false;
-
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 
@@ -17,6 +14,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  late TextEditingController emailController;
   late TextEditingController nameController;
   late TextEditingController passwordController;
   late TextEditingController studentNumberController;
@@ -29,8 +27,8 @@ class _RegisterState extends State<Register> {
   void initState() {
     super.initState();
 
+    emailController = TextEditingController();
     nameController = TextEditingController();
-
     studentNumberController = TextEditingController();
     surnameController = TextEditingController();
     courseController = TextEditingController();
@@ -41,6 +39,7 @@ class _RegisterState extends State<Register> {
 
   @override
   void dispose() {
+    emailController.dispose();
     nameController.dispose();
     passwordController.dispose();
     studentNumberController.dispose();
@@ -86,8 +85,8 @@ class _RegisterState extends State<Register> {
                       },
                       child: AppTextField(
                         keyboardType: TextInputType.number,
-                        controller: studentNumberController,
-                        labelText: 'Please enter your Student number',
+                        controller: emailController,
+                        labelText: 'Please enter your Email',
                       ),
                     ),
                     Selector<UserService, bool>(
@@ -95,7 +94,7 @@ class _RegisterState extends State<Register> {
                       builder: (context, value, child) {
                         return value
                             ? Text(
-                                'Student Number exists, please use another',
+                                'Email exists, please use another',
                                 style: TextStyle(
                                   color: Colors.red,
                                   fontWeight: FontWeight.bold,
@@ -103,6 +102,11 @@ class _RegisterState extends State<Register> {
                               )
                             : Container();
                       },
+                    ),
+                    AppTextField(
+                      keyboardType: TextInputType.text,
+                      controller: studentNumberController,
+                      labelText: 'Please enter your Student Number',
                     ),
                     AppTextField(
                       keyboardType: TextInputType.text,
@@ -143,6 +147,7 @@ class _RegisterState extends State<Register> {
                         onPressed: () {
                           createNewUserInUI(
                             context,
+                            email: emailController.text.trim(),
                             name: nameController.text.trim(),
                             surname: surnameController.text.trim(),
                             studentNumber: studentNumberController.text.trim(),
