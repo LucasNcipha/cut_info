@@ -39,13 +39,13 @@ class UserService with ChangeNotifier {
     return result;
   }
 
-  Future<String> loginUser(String username, String password) async {
+  Future<String> loginUser(String email, String password) async {
     String result = 'OK';
     _showUserProgress = true;
     _userProgressText = 'Busy logging you in...please wait...';
     notifyListeners();
     BackendlessUser? user = await Backendless.userService
-        .login(username, password, true)
+        .login(email, password, true)
         .onError((error, stackTrace) {
       result = getHumanReadableError(error.toString());
     });

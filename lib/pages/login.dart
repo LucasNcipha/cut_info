@@ -20,19 +20,19 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  late TextEditingController usernameController;
+  late TextEditingController emailController;
   late TextEditingController passwordController;
 
   @override
   void initState() {
     super.initState();
-    usernameController = TextEditingController();
+    emailController = TextEditingController();
     passwordController = TextEditingController();
   }
 
   @override
   void dispose() {
-    usernameController.dispose();
+    emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -66,7 +66,7 @@ class _LoginState extends State<Login> {
               ),
               AppTextField(
                 keyboardType: TextInputType.emailAddress,
-                controller: usernameController,
+                controller: emailController,
                 labelText: 'Please enter email address',
               ),
               AppTextField(
@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
                       primary: Colors.lightBlue),
                   onPressed: () {
                     loginUserInUI(context,
-                        email: usernameController.text,
+                        email: emailController.text.trim(),
                         password: passwordController.text);
                   },
                   child: Text(
