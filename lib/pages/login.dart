@@ -59,24 +59,21 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.only(top: 40, bottom: 20),
                 child: Text(
-                  'Please Enter your student number and password ',
+                  'Please Enter your email and password ',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  decoration: InputDecoration(hintText: 'Student Number'),
-                  keyboardType: TextInputType.number,
-                ),
+              AppTextField(
+                keyboardType: TextInputType.emailAddress,
+                controller: usernameController,
+                labelText: 'Please enter email address',
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  decoration: InputDecoration(hintText: 'Password'),
-                  obscureText: true,
-                ),
+              AppTextField(
+                hideText: true,
+                keyboardType: TextInputType.text,
+                controller: passwordController,
+                labelText: 'Please enter your password',
               ),
               Center(
                 child: Padding(
@@ -103,7 +100,11 @@ class _LoginState extends State<Login> {
                   style: ElevatedButton.styleFrom(
                       fixedSize: Size(buttonWidth, buttonHeight),
                       primary: Colors.lightBlue),
-                  onPressed: () {},
+                  onPressed: () {
+                    loginUserInUI(context,
+                        email: usernameController.text,
+                        password: passwordController.text);
+                  },
                   child: Text(
                     'Login',
                     style: TextStyle(color: Colors.black),

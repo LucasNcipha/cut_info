@@ -67,6 +67,12 @@ class _RegisterState extends State<Register> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Image(
+                        image: AssetImage('assets/logo.png'),
+                      ),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.only(bottom: 30.0),
                       child: Text(
                         'Register User',
@@ -84,7 +90,7 @@ class _RegisterState extends State<Register> {
                         }
                       },
                       child: AppTextField(
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         controller: emailController,
                         labelText: 'Please enter your Email',
                       ),
@@ -104,7 +110,7 @@ class _RegisterState extends State<Register> {
                       },
                     ),
                     AppTextField(
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.number,
                       controller: studentNumberController,
                       labelText: 'Please enter your Student Number',
                     ),
