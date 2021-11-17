@@ -16,25 +16,25 @@ class TodoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.purple.shade300,
+      color: Colors.lightBlue.shade300,
       child: Slidable(
         actionPane: SlidableDrawerActionPane(),
         secondaryActions: [
           IconSlideAction(
-            caption: 'Delete',
-            color: Colors.purple[600],
-            icon: Icons.delete,
+            caption: 'Comment',
+            color: Colors.blue,
+            icon: Icons.comment_outlined,
             onTap: deleteAction,
           ),
         ],
         child: CheckboxListTile(
-          checkColor: Colors.purple,
-          activeColor: Colors.purple[100],
+          checkColor: Colors.blue,
+          activeColor: Colors.blue[200],
           value: todo.done,
           onChanged: todoToggleAction,
           subtitle: Text(
             '${todo.created.day}/${todo.created.month}/${todo.created.year}',
-            style: TextStyle(color: Colors.white, fontSize: 10),
+            style: TextStyle(color: Colors.black, fontSize: 10),
           ),
           title: Text(
             todo.title,
