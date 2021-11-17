@@ -17,7 +17,7 @@ class AppProgressIndicator extends StatelessWidget {
               height: 20,
               width: 20,
               child: CircularProgressIndicator(
-                color: Colors.purple,
+                color: Colors.blue,
               ),
             ),
             SizedBox(
@@ -25,7 +25,7 @@ class AppProgressIndicator extends StatelessWidget {
             ),
             Text(
               text,
-              style: TextStyle(color: Colors.purple),
+              style: TextStyle(color: Colors.lightBlue),
             ),
           ],
         ),
