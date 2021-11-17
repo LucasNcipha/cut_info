@@ -39,7 +39,7 @@ class _TodoPageState extends State<TodoPage> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.purple, Colors.blue],
+            colors: [Colors.blue.shade700, Colors.lightBlue.shade50],
           ),
         ),
         child: Stack(
@@ -48,9 +48,15 @@ class _TodoPageState extends State<TodoPage> {
               child: Column(
                 children: [
                   Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Image(
+                      image: AssetImage('assets/logo.png'),
+                    ),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
                           icon: Icon(
@@ -134,10 +140,10 @@ class _TodoPageState extends State<TodoPage> {
                         return value == null
                             ? Container()
                             : Text(
-                                '${value.getProperty('name')}\'s Todo list',
+                                '${value.getProperty('name')}\'s Notification list',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 46,
+                                  fontSize: 35,
                                   fontWeight: FontWeight.w200,
                                   color: Colors.white,
                                 ),
