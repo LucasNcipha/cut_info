@@ -4,6 +4,7 @@ import 'package:cut_info/services/helper_user.dart';
 import 'package:cut_info/services/todo_service.dart';
 import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/app_progress_indicator.dart';
+import 'package:cut_info/widgets/post_card.dart';
 import 'package:cut_info/widgets/todo_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as provider;
@@ -52,6 +53,26 @@ class _TodoPageState extends State<TodoPage> {
                     child: Image(
                       image: AssetImage('assets/logo.png'),
                     ),
+                  ),
+                  post_card(
+                    postTitle: 'hallo',
+                    postText: 'post text here',
+                    containsImage: false,
+                  ),
+                  post_card(
+                    postTitle: 'hallo',
+                    postText: 'post text here',
+                    containsImage: false,
+                  ),
+                  post_card(
+                    postTitle: 'hallo',
+                    postText: 'post text here',
+                    containsImage: false,
+                  ),
+                  post_card(
+                    postTitle: 'hallo',
+                    postText: 'post text here',
+                    containsImage: false,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
