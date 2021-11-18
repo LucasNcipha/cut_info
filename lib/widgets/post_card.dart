@@ -22,26 +22,28 @@ class post_card extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: Text(postTitle,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, left: 10),
-                    child: Text(
-                      postText,
-                      style: TextStyle(color: Colors.black, fontSize: 10),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                      child: Text(postTitle,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600)),
                     ),
-                  )
-                ],
-              ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20, left: 10),
+                      child: Text(
+                        postText,
+                        style: TextStyle(color: Colors.black, fontSize: 10),
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           )),
     );
