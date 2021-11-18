@@ -54,24 +54,24 @@ class _TodoPageState extends State<TodoPage> {
                       image: AssetImage('assets/logo.png'),
                     ),
                   ),
-                  post_card(
-                    postTitle: 'hallo',
-                    postText: 'post text here',
+                  PostCard(
+                    postTitle: 'Test 1',
+                    postText: 'Lorem ipsum dolor sit amet.',
                     containsImage: false,
                   ),
-                  post_card(
-                    postTitle: 'hallo',
-                    postText: 'post text here',
+                  PostCard(
+                    postTitle: 'Test 2',
+                    postText: 'Nulla facilisi morbi tempus.',
                     containsImage: false,
                   ),
-                  post_card(
-                    postTitle: 'hallo',
-                    postText: 'post text here',
+                  PostCard(
+                    postTitle: 'Test 3',
+                    postText: 'Lorem ipsum dolor sit amet consectetur.',
                     containsImage: false,
                   ),
-                  post_card(
-                    postTitle: 'hallo',
-                    postText: 'post text here',
+                  PostCard(
+                    postTitle: 'Test 4',
+                    postText: 'Sagittis nisl rhoncus mattis rhoncus urna.',
                     containsImage: false,
                   ),
                   Padding(
