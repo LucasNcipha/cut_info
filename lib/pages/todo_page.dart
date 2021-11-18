@@ -56,12 +56,14 @@ class _TodoPageState extends State<TodoPage> {
                   ),
                   post_card(
                     postTitle: 'hallo',
-                    postText: 'post text here',
+                    postText:
+                        'This is a very long text that can easily overflow on a very small screen. here is some extra text and characters to make our sentence even longer.  ',
                     containsImage: false,
                   ),
                   post_card(
                     postTitle: 'hallo',
-                    postText: 'post text here',
+                    postText:
+                        'This is a very long text that can easily overflow on a very small screen. here is some extra text and characters to make our sentence even longer.  ',
                     containsImage: false,
                   ),
                   post_card(
