@@ -3,14 +3,14 @@ import 'package:cut_info/widgets/post_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class main_page extends StatefulWidget {
-  const main_page({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  _main_pageState createState() => _main_pageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _main_pageState extends State<main_page> {
+class _MainPageState extends State<MainPage> {
   late TextEditingController postController;
 
   @override

@@ -24,7 +24,7 @@ class RouteManager {
 
       case mainPage:
         return MaterialPageRoute(
-          builder: (context) => main_page(),
+          builder: (context) => MainPage(),
         );
 
       case loadingPage:

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class post_card extends StatelessWidget {
-  const post_card({
+class PostCard extends StatelessWidget {
+  const PostCard({
     Key? key,
     required this.postTitle,
     required this.postText,
