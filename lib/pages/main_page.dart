@@ -1,3 +1,4 @@
+import 'package:cut_info/models/post.dart';
 import 'package:cut_info/services/helper_todo.dart';
 import 'package:cut_info/widgets/post_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,8 +12,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  late TextEditingController postController;
 
+
+
+  late TextEditingController postController;
+  final posts = List<Post>.generate(10, (index) => Post("Tile $index","Content $index",false));
   @override
   void initState() {
     super.initState();
@@ -27,7 +31,58 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    AlertDialog alertDialog = AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      title: Text('Create a new Post'),
+      content: Column(
+        children: [
+          TextField(
+
+          ),
+       ////////////////////TEXTBOX
+
+        ],
+      ),
+      actions: [
+        TextButton(
+          child: Text('Cancel'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        TextButton(
+          child: Text('Save'),
+          onPressed: () async {
+            createNewTodoInUI(context,
+                titleController: postController);
+          },
+        ),
+      ],
+    );
+
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('AppBar Demo'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.add),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  return alertDialog;
+                },
+              );
+            },
+          ),
+
+        ],
+      ),
       body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -36,91 +91,38 @@ class _MainPageState extends State<MainPage> {
               colors: [Colors.blue.shade700, Colors.lightBlue.shade50],
             ),
           ),
-          child: Column(
+          child: ListView(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20, top: 50, bottom: 10),
-                child: Row(
-                  children: [
-                    Positioned(
-                      left: 20,
-                      top: 40,
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        onPressed: () {
-                          showDialog(
-                            barrierDismissible: false,
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                title: Text('Create a new Post'),
-                                content: TextField(
-                                  decoration: InputDecoration(
-                                      hintText: 'Please enter post text here'),
-                                  controller: postController,
-                                ),
-                                actions: [
-                                  TextButton(
-                                    child: Text('Cancel'),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  TextButton(
-                                    child: Text('Save'),
-                                    onPressed: () async {
-                                      createNewTodoInUI(context,
-                                          titleController: postController);
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+              Column(
+                children: [
+
+                  ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount:posts.length,
+                      itemBuilder: (context,index){
+                        return  PostCard(postTitle: posts[index].title, postText: posts[index].title, containsImage: posts[index].hasImage);
+                      }),
+
+                  //test post cards below !!
+                  /*  post_card(
+                    postTitle: 'hallo 1',
+                    postText:
+                        'this is some very long text to show that this text will fit into a very small screen without pixel overflowing...',
+                    containsImage: false,
+                  ),
+                  post_card(
+                    postTitle: 'hallo 2',
+                    postText: 'post text here',
+                    containsImage: false,
+                  ),
+                  post_card(
+                    postTitle: 'hallo 3',
+                    postText: 'post text here',
+                    containsImage: false,
+                  ), */
+                ],
               ),
-              PostCard(postTitle: "postTitle", postText: "postText", containsImage: true),
-              //test post cards below !!
-              /*  post_card(
-                postTitle: 'hallo 1',
-                postText:
-                    'this is some very long text to show that this text will fit into a very small screen without pixel overflowing...',
-                containsImage: false,
-              ),
-              post_card(
-                postTitle: 'hallo 2',
-                postText: 'post text here',
-                containsImage: false,
-              ),
-              post_card(
-                postTitle: 'hallo 3',
-                postText: 'post text here',
-                containsImage: false,
-              ), */
             ],
           )),
     );

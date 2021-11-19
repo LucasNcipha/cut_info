@@ -20,9 +20,9 @@ class PostCard extends StatelessWidget {
 
       child: ListTile(
         tileColor: Colors.lightBlue,
-        title: Text('Three-line ListTile'),
+        title: Text("$postTitle"),
         subtitle: Text(
-            'A sufficiently long subtitle warrants three lines.'
+            "$postText"
         ),
 
         isThreeLine: true,
