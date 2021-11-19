@@ -103,6 +103,7 @@ class _MainPageState extends State<MainPage> {
                   ],
                 ),
               ),
+              PostCard(postTitle: "postTitle", postText: "postText", containsImage: true),
               //test post cards below !!
               /*  post_card(
                 postTitle: 'hallo 1',
