@@ -1,5 +1,5 @@
 import 'package:cut_info/pages/loading.dart';
-import 'package:cut_info/pages/todo_page.dart';
+import 'package:cut_info/pages/main_page.dart';
 import 'package:cut_info/pages/login.dart';
 import 'package:cut_info/pages/register.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class RouteManager {
   static const String loginPage = '/';
   static const String registerPage = '/registerPage';
-  static const String todoPage = '/todoPage';
+  static const String mainPage = '/mainPage';
   static const String loadingPage = '/loadingPage';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -22,9 +22,9 @@ class RouteManager {
           builder: (context) => Register(),
         );
 
-      case todoPage:
+      case mainPage:
         return MaterialPageRoute(
-          builder: (context) => TodoPage(),
+          builder: (context) => main_page(),
         );
 
       case loadingPage:

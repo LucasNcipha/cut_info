@@ -24,7 +24,7 @@ class _main_pageState extends State<main_page> {
             children: [
               Positioned(
                 left: 20,
-                top: 30,
+                top: 40,
                 child: IconButton(
                   onPressed: () {
                     Navigator.pop(context);

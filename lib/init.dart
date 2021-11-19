@@ -20,7 +20,7 @@ class InitApp {
       context
           .read<TodoService>()
           .getTodos(context.read<UserService>().currentUser!.email);
-      Navigator.popAndPushNamed(context, RouteManager.todoPage);
+      Navigator.popAndPushNamed(context, RouteManager.mainPage);
     } else {
       Navigator.popAndPushNamed(context, RouteManager.loginPage);
     }

@@ -71,7 +71,7 @@ void loginUserInUI(BuildContext context,
       showSnackBar(context, result);
     } else {
       context.read<TodoService>().getTodos(email);
-      Navigator.of(context).popAndPushNamed(RouteManager.todoPage);
+      Navigator.of(context).popAndPushNamed(RouteManager.mainPage);
     }
   }
 }

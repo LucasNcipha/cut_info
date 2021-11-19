@@ -67,7 +67,7 @@ class _RegisterState extends State<Register> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 40, bottom: 10),
                       child: Image(
                         image: AssetImage('assets/logo.png'),
                       ),
