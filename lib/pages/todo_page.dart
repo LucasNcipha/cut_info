@@ -58,21 +58,25 @@ class _TodoPageState extends State<TodoPage> {
                     postTitle: 'hallo',
                     postText: 'post text here',
                     containsImage: false,
+                    dateTime: DateTime.now(),
                   ),
                   PostCard(
                     postTitle: 'hallo',
                     postText: 'post text here',
                     containsImage: false,
+                    dateTime: DateTime.now(),
                   ),
                   PostCard(
                     postTitle: 'hallo',
                     postText: 'post text here',
                     containsImage: false,
+                    dateTime: DateTime.now(),
                   ),
                   PostCard(
                     postTitle: 'hallo',
                     postText: 'post text here',
                     containsImage: false,
+                    dateTime: DateTime.now(),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
