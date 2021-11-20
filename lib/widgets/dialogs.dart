@@ -5,10 +5,11 @@ void showSnackBar(BuildContext context, String message) {
     duration: Duration(milliseconds: 2500),
     elevation: 10,
     shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(5),
-      topRight: Radius.circular(5),
-    )),
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(5),
+        topRight: Radius.circular(5),
+      ),
+    ),
     backgroundColor: Colors.purple,
     content: Text(message),
   );
