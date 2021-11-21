@@ -4,10 +4,9 @@ import 'package:cut_info/models/post.dart';
 import 'package:cut_info/services/helper_todo.dart';
 // ignore: unused_import
 import 'package:cut_info/services/user_service.dart';
-import 'package:cut_info/widgets/app_progress_indicator.dart';
+import 'package:cut_info/widgets/alertDialog_card.dart';
 // ignore: unused_import
 import 'package:cut_info/widgets/app_textfield.dart';
-import 'package:cut_info/widgets/dialogs.dart';
 import 'package:cut_info/widgets/post_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -57,89 +56,37 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    /////////////alertDialog//////////
-    AlertDialog alertDialog = AlertDialog(
-      backgroundColor: Colors.blue,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      title: Text('Create a new Post'),
-      content: Column(
-        children: [
-          TextField(
-            keyboardType: TextInputType.text,
-            controller: postTitleController,
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(), hintText: 'Enter Post Title.'),
-          ),
-          TextField(
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            controller: postContentController,
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(), hintText: 'Enter Post content.'),
-          ),
-        ],
-      ),
-      actions: [
-        TextButton(
-          child: Text(
-            'Cancel',
-            style: TextStyle(color: Colors.black),
-          ),
-          onPressed: () {
-            postTitleController.text = '';
-            postContentController.text = '';
-            Navigator.of(context).pop();
-          },
-        ),
-        TextButton(
-          child: Text(
-            'Save',
-            style: TextStyle(color: Colors.black),
-          ),
-          onPressed: () async {
-            Posts newPost = new Posts(postTitleController.text,
-                postContentController.text, false, DateTime.now());
-
-            Map data = {
-              'title': newPost.title,
-              'content': newPost.content,
-              'hasImage': newPost.hasImage,
-              'created': newPost.created
-            };
-
-            Backendless.data.of("General").save(data).then((value) {
-              postTitleController.text = '';
-              postContentController.text = '';
-              Navigator.of(context).pop();
-
-              AppProgressIndicator(text: 'Creating Post');
-              showSnackBar(context, 'Post Created');
-            });
-            //Backendless.data.withClass<Posts>().save(newPost);
-          },
-        ),
-      ],
-    );
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AppBar Demo'),
+        title: const Text(''),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
-            tooltip: 'Show Snackbar',
+            tooltip: 'Make a post',
             onPressed: () {
               showDialog(
                 barrierDismissible: false,
                 context: context,
                 builder: (context) {
-                  return alertDialog;
+                  return alertDialogCard(
+                      postTitleController: postTitleController,
+                      postContentController: postContentController,
+                      posts: posts,
+                      context: context);
                 },
               );
             },
           ),
+          IconButton(
+              icon: Icon(Icons.refresh),
+              tooltip: 'Refresh',
+              onPressed: () {
+                Backendless.data.of("General").find().then((tablePosts) {
+                  tablePosts!.forEach((element) {
+                    setState(() {});
+                  });
+                });
+              })
         ],
       ),
       body: Container(
