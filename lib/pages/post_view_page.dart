@@ -68,41 +68,98 @@ class _PostViewState extends State<PostView> {
             ),
           ],
         ),
-        body: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.blue.shade700, Colors.lightBlue.shade50],
+        body: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.blue.shade700, Colors.lightBlue.shade50],
+                ),
               ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 15),
-                      child: Text(
-                        post.title,
-                        style: TextStyle(fontSize: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.lightBlue.shade400,
+                                  border:
+                                      Border.all(color: Colors.black, width: 3),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(7))),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 5, bottom: 20, left: 5, right: 5),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.white),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(7))),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 6,
+                                            bottom: 6,
+                                            left: 25,
+                                            right: 25),
+                                        child: Expanded(
+                                          child: Text(
+                                            post.title,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(post.content,
+                                        style: TextStyle(fontSize: 16)),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(post.created.toString()),
+                                      ),
+                                    ],
+                                  ),
+                                  /* ListView.builder(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemCount: comments.length,
+                                        itemBuilder: (context, index) {
+                                          return CommentCard(
+                                              userName: comments[index].userName,
+                                              dateAndTime: comments[index].created,
+                                              commentText: comments[index].comment);
+                                        }), */
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Text(post.content, style: TextStyle(fontSize: 14)),
-                    Text(post.created.toString()),
-                    /* ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: comments.length,
-                        itemBuilder: (context, index) {
-                          return CommentCard(
-                              userName: comments[index].userName,
-                              dateAndTime: comments[index].created,
-                              commentText: comments[index].comment);
-                        }), */
-                  ],
-                ),
-              ],
-            )));
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
   }
 }
