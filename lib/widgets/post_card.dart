@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:cut_info/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -21,44 +20,51 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        tileColor: Colors.lightBlue.shade400,
-        title: Text(
-          "$postTitle",
-          style: TextStyle(fontSize: 18),
-        ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(7))),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "$postText",
-                      style: GoogleFonts.openSans(
-                          textStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600)),
-                    ),
-                  )),
+    return GestureDetector(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, RouteManager.postPage);
+        },
+        child: Card(
+          child: ListTile(
+            tileColor: Colors.lightBlue.shade400,
+            title: Text(
+              "$postTitle",
+              style: TextStyle(fontSize: 18),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10, top: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text("$dateTime"),
-                ],
-              ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.all(Radius.circular(7))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "$postText",
+                          style: GoogleFonts.openSans(
+                              textStyle: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w600)),
+                        ),
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10, top: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text("$dateTime"),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+            isThreeLine: true,
+          ),
         ),
-        isThreeLine: true,
       ),
     );
   }
