@@ -65,7 +65,7 @@ class _MainPageState extends State<MainPage> {
                 barrierDismissible: false,
                 context: context,
                 builder: (context) {
-                  return alertDialogCard(
+                  return AlertDialogCard(
                       postTitleController: postTitleController,
                       postContentController: postContentController,
                       posts: posts,

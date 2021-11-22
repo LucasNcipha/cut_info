@@ -6,8 +6,8 @@ import 'package:flutter/widgets.dart';
 import 'app_progress_indicator.dart';
 import 'dialogs.dart';
 
-class alertDialogCard extends StatelessWidget {
-  const alertDialogCard({
+class AlertDialogCard extends StatelessWidget {
+  const AlertDialogCard({
     Key? key,
     required this.postTitleController,
     required this.postContentController,
