@@ -1,13 +1,9 @@
-import 'package:cut_info/models/post.dart';
 import 'package:flutter/material.dart';
 
 class PostView extends StatefulWidget {
   const PostView({
     Key? key,
-    required this.post,
   }) : super(key: key);
-
-  final Posts post;
 
   @override
   State<PostView> createState() => _PostViewState();
