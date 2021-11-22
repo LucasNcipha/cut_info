@@ -38,7 +38,7 @@ class RouteManager {
 
       case postPage:
         return MaterialPageRoute(
-          builder: (context) => PostView(post: post),
+          builder: (context) => PostView(),
         );
 
       default:
