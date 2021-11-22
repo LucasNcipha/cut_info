@@ -24,7 +24,7 @@ class AlertDialogCard extends StatelessWidget {
   Widget build(BuildContext context) {
     /////////////alertDialog//////////
     AlertDialog alertDialog = AlertDialog(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.blue.shade300,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -37,12 +37,18 @@ class AlertDialogCard extends StatelessWidget {
             decoration: const InputDecoration(
                 border: OutlineInputBorder(), hintText: 'Enter Post Title.'),
           ),
-          TextField(
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            controller: postContentController,
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(), hintText: 'Enter Post content.'),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                controller: postContentController,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter Post content.'),
+              ),
+            ),
           ),
         ],
       ),
