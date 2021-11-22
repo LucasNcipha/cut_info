@@ -1,26 +1,25 @@
+import 'package:cut_info/models/post.dart';
 import 'package:flutter/material.dart';
 
-class postView extends StatefulWidget {
-  const postView({Key? key}) : super(key: key);
+class PostView extends StatefulWidget {
+  const PostView({
+    Key? key,
+    required this.post,
+  }) : super(key: key);
+
+  final Posts post;
 
   @override
-  State<postView> createState() => _postViewState();
+  State<PostView> createState() => _PostViewState();
 }
 
-class _postViewState extends State<postView> {
+class _PostViewState extends State<PostView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Posts'),
-          actions: <Widget>[
-            IconButton(
-                icon: const Icon(Icons.arrow_back),
-                tooltip: 'Back',
-                onPressed: () {
-                  Navigator.pop(context);
-                }),
-          ],
+          title: const Text('Post'),
+          actions: <Widget>[],
         ),
         body: Container(
           decoration: BoxDecoration(
