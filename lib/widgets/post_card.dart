@@ -1,3 +1,6 @@
+import 'package:cut_info/models/post.dart';
+import 'package:cut_info/pages/post_view_page.dart';
+// ignore: unused_import
 import 'package:cut_info/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +19,28 @@ class PostCard extends StatelessWidget {
   final postTitle;
   final postText;
   final bool containsImage;
-  final DateTime? dateTime;
+  final DateTime dateTime;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, RouteManager.postPage);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PostView(),
+              settings: RouteSettings(
+                arguments: Posts(
+                  postTitle,
+                  postText,
+                  false,
+                  dateTime,
+                ),
+              ),
+            ),
+          );
+          //Navigator.pushNamed(context, RouteManager.postPage);
         },
         child: Card(
           child: ListTile(
@@ -38,18 +55,19 @@ class PostCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.all(Radius.circular(7))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "$postText",
-                          style: GoogleFonts.openSans(
-                              textStyle: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w600)),
-                        ),
-                      )),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(7))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "$postText",
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w600)),
+                      ),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10, top: 5),
