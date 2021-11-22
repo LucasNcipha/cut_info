@@ -22,9 +22,9 @@ class _LoadingState extends State<Loading> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Colors.purple, Colors.blue],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.blue.shade900, Colors.lightBlue],
             ),
           ),
           child: Column(
@@ -32,7 +32,7 @@ class _LoadingState extends State<Loading> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.note_alt,
+                Icons.chat_bubble,
                 size: 100,
                 color: Colors.white,
               ),
@@ -40,9 +40,15 @@ class _LoadingState extends State<Loading> {
                 height: 30,
               ),
               Text(
-                'Loading...please wait...',
+                'Loading...',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: CircularProgressIndicator(
+                  strokeWidth: 4.0,
+                ),
               ),
             ],
           ),
