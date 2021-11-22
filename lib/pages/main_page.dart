@@ -39,11 +39,6 @@ class _MainPageState extends State<MainPage> {
               element?["hasImage"], element?["created"]);
           posts.add(post);
         });
-
-        print("title ${posts[0].title}");
-        print("content ${posts[0].content}");
-        print("hasImage ${posts[0].hasImage}");
-        print("created ${posts[0].created}");
       });
     });
   }
@@ -59,6 +54,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(''),
         actions: <Widget>[
           IconButton(
@@ -82,9 +78,17 @@ class _MainPageState extends State<MainPage> {
               icon: Icon(Icons.refresh),
               tooltip: 'Refresh',
               onPressed: () {
+                posts.clear();
                 Backendless.data.of("General").find().then((tablePosts) {
                   tablePosts!.forEach((element) {
-                    setState(() {});
+                    setState(() {
+                      Posts post = new Posts(
+                          element?["title"],
+                          element?["content"],
+                          element?["hasImage"],
+                          element?["created"]);
+                      posts.add(post);
+                    });
                   });
                 });
               }),
