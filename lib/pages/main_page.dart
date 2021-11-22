@@ -53,7 +53,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text(''),
+        title: const Text('Posts'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
