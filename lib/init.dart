@@ -21,7 +21,8 @@ class InitApp {
       //context
       //.read<TodoService>()
       //.getTodos(context.read<UserService>().currentUser!.email);
-      Navigator.popAndPushNamed(context, RouteManager.mainPage);
+      Navigator.pushNamedAndRemoveUntil(
+          context, RouteManager.mainPage, (route) => false);
     } else {
       Navigator.popAndPushNamed(context, RouteManager.loginPage);
     }
