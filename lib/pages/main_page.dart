@@ -1,16 +1,10 @@
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/post.dart';
 import 'package:cut_info/services/helper_user.dart';
-// ignore: unused_import
-import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/alertDialog_card.dart';
-// ignore: unused_import
-import 'package:cut_info/widgets/app_textfield.dart';
 import 'package:cut_info/widgets/post_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:tuple/tuple.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
