@@ -1,3 +1,4 @@
+import 'package:cut_info/models/post.dart';
 import 'package:flutter/material.dart';
 
 class PostView extends StatefulWidget {
@@ -12,9 +13,10 @@ class PostView extends StatefulWidget {
 class _PostViewState extends State<PostView> {
   @override
   Widget build(BuildContext context) {
+    final post = ModalRoute.of(context)!.settings.arguments as Posts;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Post'),
+          title: Text(post.title),
           actions: <Widget>[],
         ),
         body: Container(
