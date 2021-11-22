@@ -1,7 +1,5 @@
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/routes/routes.dart';
-// ignore: unused_import
-import 'package:cut_info/services/todo_service.dart';
 import 'package:cut_info/services/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';

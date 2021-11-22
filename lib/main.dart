@@ -1,6 +1,5 @@
 import 'package:cut_info/lifecycle.dart';
 import 'package:cut_info/routes/routes.dart';
-import 'package:cut_info/services/todo_service.dart';
 import 'package:cut_info/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,9 +16,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => UserService(),
         ),
-        ChangeNotifierProvider(
-          create: (context) => TodoService(),
-        )
+        // ChangeNotifierProvider(
+        //   create: (context) => TodoService(),
+        // )
       ],
       child: LifeCycle(
         child: MaterialApp(

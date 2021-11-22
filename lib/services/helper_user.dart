@@ -1,6 +1,5 @@
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/routes/routes.dart';
-import 'package:cut_info/services/todo_service.dart';
 import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/dialogs.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +69,7 @@ void loginUserInUI(BuildContext context,
     if (result != 'OK') {
       showSnackBar(context, result);
     } else {
-      context.read<TodoService>().getTodos(email);
+      //context.read<TodoService>().getTodos(email);
       Navigator.of(context).popAndPushNamed(RouteManager.mainPage);
     }
   }

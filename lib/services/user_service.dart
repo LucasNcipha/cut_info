@@ -1,5 +1,4 @@
 import 'package:backendless_sdk/backendless_sdk.dart';
-import 'package:cut_info/models/todo_entry.dart';
 import 'package:flutter/material.dart';
 
 class UserService with ChangeNotifier {
@@ -135,13 +134,13 @@ class UserService with ChangeNotifier {
     notifyListeners();
     try {
       await Backendless.userService.register(user);
-      TodoEntry emptyEntry = TodoEntry(todos: {}, username: user.email);
-      await Backendless.data
-          .of('TodoEntry')
-          .save(emptyEntry.toJson())
-          .onError((error, stackTrace) {
-        result = error.toString();
-      });
+      // TodoEntry emptyEntry = TodoEntry(todos: {}, username: user.email);
+      // await Backendless.data
+      //     .of('TodoEntry')
+      //     .save(emptyEntry.toJson())
+      //     .onError((error, stackTrace) {
+      //   result = error.toString();
+      // });
     } catch (e) {
       result = getHumanReadableError(e.toString());
     }

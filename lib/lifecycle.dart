@@ -1,4 +1,3 @@
-import 'package:cut_info/services/todo_service.dart';
 import 'package:cut_info/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,9 +30,9 @@ class _LifeCycleState extends State<LifeCycle> with WidgetsBindingObserver {
     if (check == UIState.CHANGED &&
         state == AppLifecycleState.inactive &&
         context.read<UserService>().currentUser != null) {
-      await context
-          .read<TodoService>()
-          .saveTodoEntry(context.read<UserService>().currentUser!.email, false);
+      // await context
+      //     .read<TodoService>()
+      //     .saveTodoEntry(context.read<UserService>().currentUser!.email, false);
       setUIStateFlag(UIState.NO_CHANGE);
     }
   }
