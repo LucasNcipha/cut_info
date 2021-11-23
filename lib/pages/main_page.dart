@@ -49,6 +49,7 @@ class _MainPageState extends State<MainPage> {
         automaticallyImplyLeading: false,
         title: const Text('Posts'),
         actions: <Widget>[
+          //add button
           IconButton(
             icon: const Icon(Icons.add),
             tooltip: 'Make a post',
@@ -64,8 +65,21 @@ class _MainPageState extends State<MainPage> {
                       context: context);
                 },
               );
+              posts.clear();
+              Backendless.data.of("General").find().then((tablePosts) {
+                tablePosts!.forEach((element) {
+                  setState(() {
+                    Posts post = new Posts(
+                        element?["title"],
+                        element?["content"],
+                        element?["hasImage"],
+                        element?["created"]);
+                    posts.add(post);
+                  });
+                });
+              });
             },
-          ),
+          ), //end add post
           IconButton(
               icon: Icon(Icons.refresh),
               tooltip: 'Refresh',
@@ -83,7 +97,7 @@ class _MainPageState extends State<MainPage> {
                     });
                   });
                 });
-              }),
+              }), //end refresh button
           IconButton(
               icon: Icon(Icons.logout),
               tooltip: 'Logout',
