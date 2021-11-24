@@ -12,6 +12,24 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
   String dropdownValue = 'Course';
   String dropdownValue2 = 'Year';
 
+  List<String> courses = <String>[
+    'Course',
+    'IT',
+    'Marketing',
+    'Somatology',
+    'Mec Engineering',
+    'Ele Engineering',
+    'Hospitality'
+  ];
+
+  List<String> years = <String>[
+    'Year',
+    '1',
+    '2',
+    '3',
+    '4(Extended)',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -34,15 +52,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
               dropdownValue = newValue!;
             });
           },
-          items: <String>[
-            'Course',
-            'IT',
-            'Marketing',
-            'Somatology',
-            'Mec Engineering',
-            'Ele Engineering',
-            'Hospitality'
-          ].map<DropdownMenuItem<String>>((String value) {
+          items: courses.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -72,13 +82,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
                 dropdownValue2 = newValue!;
               });
             },
-            items: <String>[
-              'Year',
-              '1',
-              '2',
-              '3',
-              '4(Extended)',
-            ].map<DropdownMenuItem<String>>((String value) {
+            items: years.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
