@@ -66,9 +66,9 @@ class CreatePostCard extends StatelessWidget {
             style: TextStyle(color: Colors.black),
           ),
           onPressed: () {
+            showSnackBar(context, "Creating Post");
             Navigator.of(context).pop();
-            submitPost(postTitleController, postContentController)
-                .then((value) => showSnackBar(context, "TEST"));
+            submitPost(postTitleController, postContentController);
             showSnackBar(context, "Post created");
           },
         ),
