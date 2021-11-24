@@ -1,4 +1,5 @@
 import 'package:cut_info/services/helper_post.dart';
+import 'package:cut_info/widgets/dropdown.dart';
 import 'package:cut_info/widgets/snackbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,7 @@ class CreatePostCard extends StatelessWidget {
               ),
             ),
           ),
+          DropDownWidget()
         ],
       ),
       actions: [
