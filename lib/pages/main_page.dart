@@ -55,13 +55,11 @@ class _MainPageState extends State<MainPage> {
             tooltip: 'Make a post',
             onPressed: () {
               showDialog(
-                barrierDismissible: false,
                 context: context,
                 builder: (context) {
-                  return AlertDialogCard(
+                  return CreatePostCard(
                       postTitleController: postTitleController,
                       postContentController: postContentController,
-                      posts: posts,
                       context: context);
                 },
               );
