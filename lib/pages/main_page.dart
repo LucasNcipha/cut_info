@@ -1,7 +1,7 @@
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/post.dart';
 import 'package:cut_info/services/helper_user.dart';
-import 'package:cut_info/widgets/dialogs.dart';
+import 'package:cut_info/widgets/create_post_card_alert_dialog.dart';
 import 'package:cut_info/widgets/post_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

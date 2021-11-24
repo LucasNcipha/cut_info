@@ -1,7 +1,7 @@
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/routes/routes.dart';
 import 'package:cut_info/services/user_service.dart';
-import 'package:cut_info/widgets/dialogs.dart';
+import 'package:cut_info/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'app_progress_indicator.dart';
-import 'dialogs.dart';
+import 'snackbar.dart';
 
 class CommentPopup extends StatelessWidget {
   const CommentPopup({
