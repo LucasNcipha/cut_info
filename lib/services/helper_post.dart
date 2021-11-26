@@ -8,7 +8,7 @@ submitPost(TextEditingController postTitleController,
   AppProgressIndicator(text: 'Creating Post');
 
   Posts newPost = new Posts(postTitleController.text,
-      postContentController.text, false, DateTime.now());
+      postContentController.text, false, DateTime.now(), "");
 
   postTitleController.text = '';
   postContentController.text = '';

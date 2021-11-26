@@ -56,7 +56,7 @@ class CommentCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 5, bottom: 5),
                         child: Text(
-                          dateAndTime,
+                          dateAndTime.toString(),
                           style: TextStyle(
                               color: Colors.blue.shade900,
                               fontWeight: FontWeight.w600),

@@ -28,8 +28,9 @@ class _MainPageState extends State<MainPage> {
       tablePosts!.forEach((element) {
         setState(() {
           Posts post = new Posts(element?["title"], element?["content"],
-              element?["hasImage"], element?["created"]);
+              element?["hasImage"], element?["created"], element?["objectId"]);
           posts.add(post);
+          print(element?["objectId"]);
         });
       });
     });
@@ -71,7 +72,8 @@ class _MainPageState extends State<MainPage> {
                         element?["title"],
                         element?["content"],
                         element?["hasImage"],
-                        element?["created"]);
+                        element?["created"],
+                        element?["objectId"]);
                     posts.add(post);
                   });
                 });
@@ -90,7 +92,8 @@ class _MainPageState extends State<MainPage> {
                           element?["title"],
                           element?["content"],
                           element?["hasImage"],
-                          element?["created"]);
+                          element?["created"],
+                          element?["objectId"]);
                       posts.add(post);
                     });
                   });
@@ -128,6 +131,7 @@ class _MainPageState extends State<MainPage> {
                             postText: posts[index].content,
                             containsImage: posts[index].hasImage,
                             dateTime: posts[index].created,
+                            objectId: posts[index].objectId,
                           );
                         }),
                   ],

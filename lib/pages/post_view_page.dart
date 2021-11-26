@@ -1,17 +1,14 @@
-// ignore: unused_import
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/comment.dart';
 import 'package:cut_info/models/post.dart';
-
-// ignore: unused_import
 import 'package:cut_info/widgets/comment_card.dart';
 import 'package:cut_info/widgets/comment_popup.dart';
 import 'package:flutter/material.dart';
 
 class PostView extends StatefulWidget {
-  const PostView({
-    Key? key,
-  }) : super(key: key);
+  const PostView({Key? key, this.objectID}) : super(key: key);
+
+  final String? objectID;
 
   @override
   State<PostView> createState() => _PostViewState();
@@ -26,15 +23,20 @@ class _PostViewState extends State<PostView> {
   void initState() {
     super.initState();
     postCommentController = TextEditingController();
-    /*  Backendless.data.of("Comments").find().then((tableComments) {
+
+    DataQueryBuilder queryBuilder = DataQueryBuilder()
+      ..whereClause = "postID = '${widget.objectID}'";
+    print({widget.objectID});
+    Backendless.data.of("Comments").find(queryBuilder).then((tableComments) {
       tableComments!.forEach((element) {
         setState(() {
-          Comment comment = new Comment(
-              element?["Comment"], element?["Created"], element?["UserName"]);
+          Comment comment = new Comment(element?["comment"],
+              element?["created"], element?["user"], element?["postID"]);
           comments.add(comment);
+          print(element?["comment"]);
         });
       });
-    }); */
+    });
   }
 
   @override
@@ -61,7 +63,8 @@ class _PostViewState extends State<PostView> {
                     return CommentPopup(
                         commentContentController: postCommentController,
                         comments: comments,
-                        context: context);
+                        context: context,
+                        postID: post.objectId);
                   },
                 );
               },
@@ -70,92 +73,108 @@ class _PostViewState extends State<PostView> {
         ),
         body: Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.blue.shade700, Colors.lightBlue.shade50],
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+            SingleChildScrollView(
+              child: Column(
                 children: [
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.lightBlue.shade400,
-                                  border:
-                                      Border.all(color: Colors.black, width: 3),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(7))),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.blue.shade700,
+                          Colors.lightBlue.shade50
+                        ],
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
                               child: Column(
-                                mainAxisSize: MainAxisSize.min,
+                                mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 5, bottom: 20, left: 5, right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: Colors.white),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(7))),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 6,
-                                            bottom: 6,
-                                            left: 25,
-                                            right: 25),
-                                        child: Expanded(
-                                          child: Text(
-                                            post.title,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w700),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.lightBlue.shade400,
+                                        border: Border.all(
+                                            color: Colors.black, width: 3),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(7))),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 5,
+                                              bottom: 20,
+                                              left: 5,
+                                              right: 5),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.white),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(7))),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 6,
+                                                  bottom: 6,
+                                                  left: 25,
+                                                  right: 25),
+                                              child: Expanded(
+                                                child: Text(
+                                                  post.title,
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Text(post.content,
+                                              style: TextStyle(fontSize: 16)),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child:
+                                                  Text(post.created.toString()),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Text(post.content,
-                                        style: TextStyle(fontSize: 16)),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(post.created.toString()),
-                                      ),
-                                    ],
-                                  ),
-                                  /* ListView.builder(
-                                        physics: NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemCount: comments.length,
-                                        itemBuilder: (context, index) {
-                                          return CommentCard(
-                                              userName: comments[index].userName,
-                                              dateAndTime: comments[index].created,
-                                              commentText: comments[index].comment);
-                                        }), */
                                 ],
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
+                  ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: comments.length,
+                      itemBuilder: (context, index) {
+                        return CommentCard(
+                            userName: comments[index].userName,
+                            dateAndTime: comments[index].created,
+                            commentText: comments[index].comment);
+                      }),
                 ],
               ),
             ),

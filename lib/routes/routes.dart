@@ -12,7 +12,7 @@ class RouteManager {
   static const String mainPage = '/mainPage';
   static const String postPage = '/postPage';
   static const String loadingPage = '/loadingPage';
-  static Posts post = Posts("title", "content", false, DateTime.now());
+  static Posts post = Posts("", "", false, DateTime.now(), "");
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {

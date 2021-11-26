@@ -11,12 +11,14 @@ class CommentPopup extends StatelessWidget {
     Key? key,
     required this.commentContentController,
     required this.comments,
+    required this.postID,
     required this.context,
   }) : super(key: key);
 
   final TextEditingController commentContentController;
   final List<Comment> comments;
   final BuildContext context;
+  final String postID;
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +64,14 @@ class CommentPopup extends StatelessWidget {
             style: TextStyle(color: Colors.black),
           ),
           onPressed: () async {
-            Comment newComment = new Comment(
-                commentContentController.text, DateTime.now(), 'user123');
+            Comment newComment = new Comment(commentContentController.text,
+                DateTime.now(), 'user123', postID);
 
             Map data = {
               'comment': newComment.comment,
               'created': newComment.created,
-              'user': newComment.userName
+              'user': newComment.userName,
+              'postID': newComment.postID
             };
 
             Backendless.data.of("Comments").save(data).then((value) {

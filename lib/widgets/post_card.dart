@@ -13,13 +13,15 @@ class PostCard extends StatelessWidget {
       required this.postTitle,
       required this.postText,
       required this.containsImage,
-      required this.dateTime})
+      required this.dateTime,
+      required this.objectId})
       : super(key: key);
 
   final postTitle;
   final postText;
   final bool containsImage;
   final DateTime dateTime;
+  final String objectId;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +31,12 @@ class PostCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const PostView(),
+              builder: (context) => PostView(
+                objectID: objectId,
+              ),
               settings: RouteSettings(
-                arguments: Posts(
-                  postTitle,
-                  postText,
-                  false,
-                  dateTime,
-                ),
+                arguments:
+                    Posts(postTitle, postText, false, dateTime, objectId),
               ),
             ),
           );
