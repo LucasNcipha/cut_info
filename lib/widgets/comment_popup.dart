@@ -64,6 +64,7 @@ class CommentPopup extends StatelessWidget {
             style: TextStyle(color: Colors.black),
           ),
           onPressed: () async {
+            Navigator.of(context).pop();
             Comment newComment = new Comment(commentContentController.text,
                 DateTime.now(), 'user123', postID);
 
@@ -76,7 +77,6 @@ class CommentPopup extends StatelessWidget {
 
             Backendless.data.of("Comments").save(data).then((value) {
               commentContentController.text = '';
-              Navigator.of(context).pop();
 
               AppProgressIndicator(text: 'Creating Comment');
               showSnackBar(context, 'Comment Created');
