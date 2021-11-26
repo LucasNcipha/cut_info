@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/post.dart';
 import 'package:cut_info/services/helper_user.dart';
@@ -18,20 +20,24 @@ class _MainPageState extends State<MainPage> {
   late TextEditingController postContentController;
 
   final List<Posts> posts = List.empty(growable: true);
+  DataQueryBuilder queryBuilder = DataQueryBuilder()..pageSize = 100;
 
   @override
   void initState() {
     super.initState();
     postTitleController = TextEditingController();
     postContentController = TextEditingController();
-    Backendless.data.of("General").find().then((tablePosts) {
+
+    Backendless.data.of("General").find(queryBuilder).then((tablePosts) {
       tablePosts!.forEach((element) {
         setState(() {
           Posts post = new Posts(element?["title"], element?["content"],
               element?["hasImage"], element?["created"], element?["objectId"]);
           posts.add(post);
-          print(element?["objectId"]);
         });
+      });
+      setState(() {
+        posts.sort((a, b) => b.created.compareTo(a.created));
       });
     });
   }
@@ -54,8 +60,8 @@ class _MainPageState extends State<MainPage> {
           IconButton(
             icon: const Icon(Icons.add),
             tooltip: 'Make a post',
-            onPressed: () {
-              showDialog(
+            onPressed: () async {
+              await showDialog(
                 context: context,
                 builder: (context) {
                   return CreatePostCard(
@@ -64,8 +70,13 @@ class _MainPageState extends State<MainPage> {
                       context: context);
                 },
               );
+
               posts.clear();
-              Backendless.data.of("General").find().then((tablePosts) {
+              sleep(Duration(microseconds: 200));
+              await Backendless.data
+                  .of("General")
+                  .find(queryBuilder)
+                  .then((tablePosts) {
                 tablePosts!.forEach((element) {
                   setState(() {
                     Posts post = new Posts(
@@ -77,6 +88,10 @@ class _MainPageState extends State<MainPage> {
                     posts.add(post);
                   });
                 });
+
+                setState(() {
+                  posts.sort((a, b) => b.created.compareTo(a.created));
+                });
               });
             },
           ), //end add post
@@ -85,7 +100,10 @@ class _MainPageState extends State<MainPage> {
               tooltip: 'Refresh',
               onPressed: () {
                 posts.clear();
-                Backendless.data.of("General").find().then((tablePosts) {
+                Backendless.data
+                    .of("General")
+                    .find(queryBuilder)
+                    .then((tablePosts) {
                   tablePosts!.forEach((element) {
                     setState(() {
                       Posts post = new Posts(
@@ -96,6 +114,9 @@ class _MainPageState extends State<MainPage> {
                           element?["objectId"]);
                       posts.add(post);
                     });
+                  });
+                  setState(() {
+                    posts.sort((a, b) => b.created.compareTo(a.created));
                   });
                 });
               }), //end refresh button

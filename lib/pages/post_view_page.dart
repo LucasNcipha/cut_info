@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/comment.dart';
 import 'package:cut_info/models/post.dart';
@@ -25,7 +27,8 @@ class _PostViewState extends State<PostView> {
     postCommentController = TextEditingController();
 
     DataQueryBuilder queryBuilder = DataQueryBuilder()
-      ..whereClause = "postID = '${widget.objectID}'";
+      ..whereClause = "postID = '${widget.objectID}'"
+      ..pageSize = 100;
     print({widget.objectID});
     Backendless.data.of("Comments").find(queryBuilder).then((tableComments) {
       tableComments!.forEach((element) {
@@ -35,6 +38,9 @@ class _PostViewState extends State<PostView> {
           comments.add(comment);
           print(element?["comment"]);
         });
+      });
+      setState(() {
+        comments.sort((a, b) => b.created.compareTo(a.created));
       });
     });
   }
@@ -55,8 +61,8 @@ class _PostViewState extends State<PostView> {
             IconButton(
               icon: const Icon(Icons.comment),
               tooltip: 'Make a comment',
-              onPressed: () {
-                showDialog(
+              onPressed: () async {
+                await showDialog(
                   barrierDismissible: false,
                   context: context,
                   builder: (context) {
@@ -67,6 +73,30 @@ class _PostViewState extends State<PostView> {
                         postID: post.objectId);
                   },
                 );
+                sleep(Duration(microseconds: 200));
+                DataQueryBuilder queryBuilder = DataQueryBuilder()
+                  ..whereClause = "postID = '${widget.objectID}'"
+                  ..pageSize = 100;
+                comments.clear();
+                Backendless.data
+                    .of("Comments")
+                    .find(queryBuilder)
+                    .then((tableComments) {
+                  tableComments!.forEach((element) {
+                    setState(() {
+                      Comment comment = new Comment(
+                          element?["comment"],
+                          element?["created"],
+                          element?["user"],
+                          element?["postID"]);
+                      comments.add(comment);
+                      print(element?["comment"]);
+                    });
+                  });
+                  setState(() {
+                    comments.sort((a, b) => b.created.compareTo(a.created));
+                  });
+                });
               },
             ),
           ],
