@@ -21,7 +21,7 @@ class CreatePostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     /////////////alertDialog//////////
     AlertDialog alertDialog = AlertDialog(
-      backgroundColor: Colors.blue.shade300,
+      backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -54,7 +54,7 @@ class CreatePostCard extends StatelessWidget {
         TextButton(
           child: Text(
             'Cancel',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.black, fontSize: 18),
           ),
           onPressed: () {
             postTitleController.text = '';
@@ -65,7 +65,7 @@ class CreatePostCard extends StatelessWidget {
         TextButton(
           child: Text(
             'Save',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.lightBlue.shade400, fontSize: 18),
           ),
           onPressed: () {
             showSnackBar(context, "Creating Post");

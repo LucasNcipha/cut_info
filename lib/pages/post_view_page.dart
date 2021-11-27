@@ -56,6 +56,7 @@ class _PostViewState extends State<PostView> {
     final post = ModalRoute.of(context)!.settings.arguments as Posts;
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.blue.shade700,
           title: Text('Post'),
           actions: <Widget>[
             IconButton(
@@ -103,109 +104,110 @@ class _PostViewState extends State<PostView> {
         ),
         body: Stack(
           children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.blue.shade700,
-                          Colors.lightBlue.shade50
-                        ],
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.lightBlue.shade400,
-                                        border: Border.all(
-                                            color: Colors.black, width: 3),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(7))),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 5,
-                                              bottom: 20,
-                                              left: 5,
-                                              right: 5),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.white),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(7))),
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 6,
-                                                  bottom: 6,
-                                                  left: 25,
-                                                  right: 25),
-                                              child: Expanded(
-                                                child: Text(
-                                                  post.title,
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.w700),
+            Flexible(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.blue.shade700, Colors.lightBlue.shade50],
+                  ),
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.lightBlue.shade400,
+                                          border: Border.all(
+                                              color: Colors.black45,
+                                              width: 1.5),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5,
+                                                bottom: 20,
+                                                left: 5,
+                                                right: 5),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.white70),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20))),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 6,
+                                                    bottom: 6,
+                                                    left: 25,
+                                                    right: 25),
+                                                child: Expanded(
+                                                  child: Text(
+                                                    post.title,
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w700),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Text(post.content,
-                                              style: TextStyle(fontSize: 16)),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child:
-                                                  Text(post.created.toString()),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                          Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(post.content,
+                                                style: TextStyle(fontSize: 16)),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                    post.created.toString()),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
+                      ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: comments.length,
+                          itemBuilder: (context, index) {
+                            return CommentCard(
+                                userName: comments[index].userName,
+                                dateAndTime: comments[index].created,
+                                commentText: comments[index].comment);
+                          }),
+                    ],
                   ),
-                  ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: comments.length,
-                      itemBuilder: (context, index) {
-                        return CommentCard(
-                            userName: comments[index].userName,
-                            dateAndTime: comments[index].created,
-                            commentText: comments[index].comment);
-                      }),
-                ],
+                ),
               ),
             ),
           ],

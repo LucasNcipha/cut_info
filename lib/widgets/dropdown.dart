@@ -45,7 +45,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
           style: TextStyle(color: Colors.black),
           underline: Container(
             height: 3,
-            color: Colors.blue.shade800,
+            color: Colors.lightBlue.shade400,
           ),
           onChanged: (String? newValue) {
             setState(() {
@@ -55,7 +55,9 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
           items: courses.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
-              child: Text(value),
+              child: Text(
+                value,
+              ),
             );
           }).toList(),
         ),
@@ -75,7 +77,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
             style: TextStyle(color: Colors.black),
             underline: Container(
               height: 3,
-              color: Colors.blue.shade800,
+              color: Colors.lightBlue.shade400,
             ),
             onChanged: (String? newValue) {
               setState(() {

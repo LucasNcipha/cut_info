@@ -129,13 +129,7 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue.shade700, Colors.lightBlue.shade50],
-          ),
-        ),
+        color: Colors.white,
         child: Stack(
           children: [
             ListView(

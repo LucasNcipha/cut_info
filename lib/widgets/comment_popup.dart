@@ -25,7 +25,7 @@ class CommentPopup extends StatelessWidget {
     /////////////alertDialog//////////
 
     AlertDialog commentDialog = AlertDialog(
-      backgroundColor: Colors.blue.shade300,
+      backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -51,7 +51,7 @@ class CommentPopup extends StatelessWidget {
         TextButton(
           child: Text(
             'Cancel',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.black, fontSize: 18),
           ),
           onPressed: () {
             commentContentController.text = '';
@@ -61,7 +61,7 @@ class CommentPopup extends StatelessWidget {
         TextButton(
           child: Text(
             'Save',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.lightBlue.shade400, fontSize: 18),
           ),
           onPressed: () async {
             Navigator.of(context).pop();

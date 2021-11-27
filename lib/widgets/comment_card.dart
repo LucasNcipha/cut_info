@@ -21,7 +21,7 @@ class CommentCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.indigo.shade100),
+            border: Border.all(color: Colors.black45),
             borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +41,7 @@ class CommentCard extends StatelessWidget {
                 padding: const EdgeInsets.all(4.0),
                 child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.indigo[200],
+                        color: Colors.blue.shade400,
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: Column(children: [
                       Padding(

@@ -56,10 +56,11 @@ class PostCard extends StatelessWidget {
                   padding: const EdgeInsets.all(5.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
+                        border: Border.all(color: Colors.white70),
                         borderRadius: BorderRadius.all(Radius.circular(7))),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(
+                          top: 8, bottom: 8, left: 15, right: 15),
                       child: Text(
                         "$postText",
                         style: GoogleFonts.openSans(
