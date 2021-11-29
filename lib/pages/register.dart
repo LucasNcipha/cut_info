@@ -2,6 +2,8 @@ import 'package:cut_info/services/helper_user.dart';
 import 'package:cut_info/services/user_service.dart';
 import 'package:cut_info/widgets/app_progress_indicator.dart';
 import 'package:cut_info/widgets/app_textfield.dart';
+import 'package:cut_info/widgets/register_course_dropdown.dart';
+import 'package:cut_info/widgets/register_year_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
@@ -124,16 +126,13 @@ class _RegisterState extends State<Register> {
                       controller: surnameController,
                       labelText: 'Please enter your surname',
                     ),
-                    AppTextField(
-                      keyboardType: TextInputType.text,
-                      controller: courseController,
-                      labelText: 'Please Enter your Course',
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30),
+                      child: RegisterCourseDropDownWidget(),
                     ),
-                    AppTextField(
-                      keyboardType: TextInputType.number,
-                      controller: yearController,
-                      labelText: 'Please Enter your year of study',
-                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: RegisterYearDropDownWidget()),
                     AppTextField(
                       hideText: true,
                       keyboardType: TextInputType.text,
