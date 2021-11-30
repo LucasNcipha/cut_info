@@ -18,6 +18,15 @@ void createNewUserInUI(
 }) async {
   FocusManager.instance.primaryFocus?.unfocus();
 
+  debugPrint(email);
+  debugPrint(name);
+  debugPrint(surname);
+  debugPrint(studentNumber);
+  debugPrint(course);
+  debugPrint(year);
+  debugPrint(password);
+  debugPrint(passwordConfirm);
+
   if (email.isEmpty ||
       name.isEmpty ||
       surname.isEmpty ||

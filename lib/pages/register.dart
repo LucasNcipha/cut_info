@@ -156,8 +156,8 @@ class _RegisterState extends State<Register> {
                             name: nameController.text.trim(),
                             surname: surnameController.text.trim(),
                             studentNumber: studentNumberController.text.trim(),
-                            course: courseController.text.trim(),
-                            year: yearController.text.trim(),
+                            course: getDrowdownCourse().trim(),
+                            year: getDropdownYear().trim(),
                             password: passwordController.text,
                             passwordConfirm: passwordConfirmController.text,
                           );
