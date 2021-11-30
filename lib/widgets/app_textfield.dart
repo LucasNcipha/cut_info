@@ -7,12 +7,15 @@ class AppTextField extends StatelessWidget {
     required this.labelText,
     required this.keyboardType,
     this.hideText = false,
+    this.validate = false,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String labelText;
   final TextInputType keyboardType;
   final bool hideText;
+
+  final bool validate;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,7 @@ class AppTextField extends StatelessWidget {
         controller: controller,
         keyboardType: keyboardType,
         decoration: InputDecoration(
+          errorText: validate ? 'All fields must be filled' : null,
           labelStyle: TextStyle(color: Colors.black),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
