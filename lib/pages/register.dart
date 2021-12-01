@@ -4,9 +4,11 @@ import 'package:cut_info/widgets/app_progress_indicator.dart';
 import 'package:cut_info/widgets/app_textfield.dart';
 import 'package:cut_info/widgets/register_course_dropdown.dart';
 import 'package:cut_info/widgets/register_year_dropdown.dart';
+import 'package:cut_info/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -64,11 +66,7 @@ class _RegisterState extends State<Register> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.blue.shade700, Colors.lightBlue.shade50])),
+            color: Colors.blue,
             child: Center(
               child: SingleChildScrollView(
                 child: Column(
@@ -152,6 +150,16 @@ class _RegisterState extends State<Register> {
                         controller: passwordController,
                         labelText: 'Please enter your password',
                         validate: passwordlValidate),
+                    new FlutterPwValidator(
+                        width: 300,
+                        height: 150,
+                        minLength: 6,
+                        uppercaseCharCount: 1,
+                        numericCharCount: 2,
+                        controller: passwordController,
+                        onSuccess: () {
+                          showSnackBar(context, 'Password Validated');
+                        }),
                     AppTextField(
                         hideText: true,
                         keyboardType: TextInputType.text,
