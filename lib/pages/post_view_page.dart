@@ -5,8 +5,6 @@ import 'package:cut_info/widgets/comment_card.dart';
 import 'package:cut_info/widgets/create_comment_popup.dart';
 import 'package:flutter/material.dart';
 
-String userName = 'user123';
-
 class PostView extends StatefulWidget {
   const PostView({Key? key, this.objectID}) : super(key: key);
 
@@ -59,7 +57,6 @@ class _PostViewState extends State<PostView> {
                       commentContentController: postCommentController,
                       context: context,
                       postID: post.objectId,
-                      userName: userName,
                     );
                   },
                 );
