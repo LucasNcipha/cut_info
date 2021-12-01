@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/post.dart';
 import 'package:cut_info/widgets/app_progress_indicator.dart';
@@ -24,6 +26,7 @@ Future<void> submitPost(TextEditingController postTitleController,
 }
 
 Future<List<Posts>> recievePosts() async {
+  sleep(Duration(microseconds: 200));
   List<Posts> posts = List.empty(growable: true);
   DataQueryBuilder queryBuilder = DataQueryBuilder()..pageSize = 100;
 

@@ -1,8 +1,6 @@
-import 'dart:io';
-
-import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/comment.dart';
 import 'package:cut_info/models/post.dart';
+import 'package:cut_info/services/helper_comment.dart';
 import 'package:cut_info/widgets/comment_card.dart';
 import 'package:cut_info/widgets/create_comment_popup.dart';
 import 'package:flutter/material.dart';
@@ -19,28 +17,16 @@ class PostView extends StatefulWidget {
 class _PostViewState extends State<PostView> {
   late TextEditingController postCommentController;
 
-  final List<Comment> comments = List.empty(growable: true);
+  List<Comment> comments = List.empty(growable: true);
 
   @override
   void initState() {
     super.initState();
     postCommentController = TextEditingController();
 
-    DataQueryBuilder queryBuilder = DataQueryBuilder()
-      ..whereClause = "postID = '${widget.objectID}'"
-      ..pageSize = 100;
-    print({widget.objectID});
-    Backendless.data.of("Comments").find(queryBuilder).then((tableComments) {
-      tableComments!.forEach((element) {
-        setState(() {
-          Comment comment = new Comment(element?["comment"],
-              element?["created"], element?["user"], element?["postID"]);
-          comments.add(comment);
-          print(element?["comment"]);
-        });
-      });
+    recieveComments(widget.objectID).then((value) {
       setState(() {
-        comments.sort((a, b) => b.created.compareTo(a.created));
+        comments = value;
       });
     });
   }
@@ -74,28 +60,10 @@ class _PostViewState extends State<PostView> {
                         postID: post.objectId);
                   },
                 );
-                sleep(Duration(microseconds: 200));
-                DataQueryBuilder queryBuilder = DataQueryBuilder()
-                  ..whereClause = "postID = '${widget.objectID}'"
-                  ..pageSize = 100;
-                comments.clear();
-                Backendless.data
-                    .of("Comments")
-                    .find(queryBuilder)
-                    .then((tableComments) {
-                  tableComments!.forEach((element) {
-                    setState(() {
-                      Comment comment = new Comment(
-                          element?["comment"],
-                          element?["created"],
-                          element?["user"],
-                          element?["postID"]);
-                      comments.add(comment);
-                      print(element?["comment"]);
-                    });
-                  });
+
+                recieveComments(widget.objectID).then((value) {
                   setState(() {
-                    comments.sort((a, b) => b.created.compareTo(a.created));
+                    comments = value;
                   });
                 });
               },
