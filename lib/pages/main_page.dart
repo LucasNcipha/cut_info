@@ -1,11 +1,14 @@
-import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/post.dart';
 import 'package:cut_info/services/helper_post.dart';
 import 'package:cut_info/services/helper_user.dart';
+import 'package:cut_info/services/user_service.dart';
+import 'package:cut_info/widgets/app_progress_indicator.dart';
 import 'package:cut_info/widgets/create_post_card_alert_dialog.dart';
 import 'package:cut_info/widgets/post_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tuple/tuple.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -19,7 +22,6 @@ class _MainPageState extends State<MainPage> {
   late TextEditingController postContentController;
 
   List<Posts> posts = List.empty(growable: true);
-  DataQueryBuilder queryBuilder = DataQueryBuilder()..pageSize = 100;
 
   @override
   void initState() {
@@ -113,6 +115,15 @@ class _MainPageState extends State<MainPage> {
                   ],
                 ),
               ],
+            ),
+            Selector<UserService, Tuple2>(
+              selector: (context, value) =>
+                  Tuple2(value.showUserProgress, value.userProgressText),
+              builder: (context, value, child) {
+                return value.item1
+                    ? AppProgressIndicator(text: '${value.item2}')
+                    : Container();
+              },
             ),
           ],
         ),
