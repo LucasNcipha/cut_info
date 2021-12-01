@@ -24,6 +24,12 @@ class _RegisterState extends State<Register> {
   late TextEditingController courseController;
   late TextEditingController yearController;
   late TextEditingController passwordConfirmController;
+  bool emailValidate = false;
+  bool nameValidate = false;
+  bool passwordlValidate = false;
+  bool studentNumberValidate = false;
+  bool surnameValidate = false;
+  bool passwordConfirmValidate = false;
 
   @override
   void initState() {
@@ -95,6 +101,7 @@ class _RegisterState extends State<Register> {
                         keyboardType: TextInputType.text,
                         controller: emailController,
                         labelText: 'Please enter your Email',
+                        validate: emailValidate,
                       ),
                     ),
                     Selector<UserService, bool>(
@@ -115,41 +122,67 @@ class _RegisterState extends State<Register> {
                       keyboardType: TextInputType.number,
                       controller: studentNumberController,
                       labelText: 'Please enter your Student Number',
+                      validate: studentNumberValidate,
                     ),
                     AppTextField(
-                      keyboardType: TextInputType.text,
-                      controller: nameController,
-                      labelText: 'Please enter your name',
-                    ),
+                        keyboardType: TextInputType.text,
+                        controller: nameController,
+                        labelText: 'Please enter your name',
+                        validate: nameValidate),
                     AppTextField(
-                      keyboardType: TextInputType.text,
-                      controller: surnameController,
-                      labelText: 'Please enter your surname',
-                    ),
+                        keyboardType: TextInputType.text,
+                        controller: surnameController,
+                        labelText: 'Please enter your surname',
+                        validate: surnameValidate),
+                    // Course drop down
                     Padding(
                       padding: const EdgeInsets.only(left: 30),
                       child: RegisterCourseDropDownWidget(),
                     ),
+                    //
+                    // Year drop down
                     Padding(
                         padding: const EdgeInsets.only(left: 30),
                         child: RegisterYearDropDownWidget()),
+                    // drop downs end
+                    //
                     AppTextField(
-                      hideText: true,
-                      keyboardType: TextInputType.text,
-                      controller: passwordController,
-                      labelText: 'Please enter your password',
-                    ),
+                        hideText: true,
+                        keyboardType: TextInputType.text,
+                        controller: passwordController,
+                        labelText: 'Please enter your password',
+                        validate: passwordlValidate),
                     AppTextField(
-                      hideText: true,
-                      keyboardType: TextInputType.text,
-                      controller: passwordConfirmController,
-                      labelText: 'Please Confirm your password',
-                    ),
+                        hideText: true,
+                        keyboardType: TextInputType.text,
+                        controller: passwordConfirmController,
+                        labelText: 'Please Confirm your password',
+                        validate: passwordConfirmValidate),
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(primary: Colors.purple),
                         onPressed: () {
+                          setState(() {
+                            if (emailController.text.isEmpty) {
+                              emailValidate = true;
+                            }
+                            if (studentNumberController.text.isEmpty) {
+                              studentNumberValidate = true;
+                            }
+                            if (nameController.text.isEmpty) {
+                              nameValidate = true;
+                            }
+                            if (surnameController.text.isEmpty) {
+                              surnameValidate = true;
+                            }
+                            if (passwordController.text.isEmpty) {
+                              passwordlValidate = true;
+                            }
+                            if (passwordConfirmController.text.isEmpty) {
+                              passwordConfirmValidate = true;
+                            }
+                          });
                           createNewUserInUI(
                             context,
                             email: emailController.text.trim(),

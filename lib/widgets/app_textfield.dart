@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+bool getvalidate(bool validate) {
+  return validate;
+}
+
 class AppTextField extends StatelessWidget {
   const AppTextField({
     Key? key,
@@ -7,14 +11,13 @@ class AppTextField extends StatelessWidget {
     required this.labelText,
     required this.keyboardType,
     this.hideText = false,
-    this.validate = false,
+    required this.validate,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String labelText;
   final TextInputType keyboardType;
   final bool hideText;
-
   final bool validate;
 
   @override

@@ -11,6 +11,8 @@ final buttonWidth = 180.0;
 final buttonHeight = 50.0;
 
 bool autoLogin = false;
+bool emailValidate = false;
+bool passwordlValidate = false;
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -74,13 +76,14 @@ class _LoginState extends State<Login> {
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       labelText: 'Please enter email address',
+                      validate: emailValidate,
                     ),
                     AppTextField(
-                      hideText: true,
-                      keyboardType: TextInputType.text,
-                      controller: passwordController,
-                      labelText: 'Please enter your password',
-                    ),
+                        hideText: true,
+                        keyboardType: TextInputType.text,
+                        controller: passwordController,
+                        labelText: 'Please enter your password',
+                        validate: passwordlValidate),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                     ),
@@ -106,6 +109,15 @@ class _LoginState extends State<Login> {
                           fixedSize: Size(buttonWidth, buttonHeight),
                           primary: Colors.lightBlue),
                       onPressed: () {
+                        setState(() {
+                          if (emailController.text.isEmpty) {
+                            emailValidate = true;
+                          }
+                          if (passwordController.text.isEmpty) {
+                            passwordlValidate = true;
+                          }
+                        });
+
                         loginUserInUI(context,
                             email: emailController.text.trim(),
                             password: passwordController.text);
