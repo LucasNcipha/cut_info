@@ -63,8 +63,11 @@ class _MainPageState extends State<MainPage> {
                   );
                 },
               );
-              setState(() {
-                recievePosts().then((value) => posts = value);
+
+              recievePosts().then((value) {
+                setState(() {
+                  posts = value;
+                });
               });
             },
           ), //end add post
@@ -72,8 +75,10 @@ class _MainPageState extends State<MainPage> {
               icon: Icon(Icons.refresh),
               tooltip: 'Refresh',
               onPressed: () {
-                setState(() {
-                  recievePosts().then((value) => posts = value);
+                recievePosts().then((value) {
+                  setState(() {
+                    posts = value;
+                  });
                 });
               }), //end refresh button
           IconButton(
