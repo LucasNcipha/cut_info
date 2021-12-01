@@ -4,7 +4,7 @@ import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/comment.dart';
 import 'package:cut_info/models/post.dart';
 import 'package:cut_info/widgets/comment_card.dart';
-import 'package:cut_info/widgets/comment_popup.dart';
+import 'package:cut_info/widgets/create_comment_popup.dart';
 import 'package:flutter/material.dart';
 
 class PostView extends StatefulWidget {
