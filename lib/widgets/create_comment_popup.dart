@@ -2,21 +2,21 @@ import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'app_progress_indicator.dart';
 import 'snackbar.dart';
 
 class CommentPopup extends StatelessWidget {
-  const CommentPopup({
-    Key? key,
-    required this.commentContentController,
-    required this.comments,
-    required this.postID,
-    required this.context,
-  }) : super(key: key);
+  const CommentPopup(
+      {Key? key,
+      required this.commentContentController,
+      required this.postID,
+      required this.context,
+      required this.userName})
+      : super(key: key);
 
   final TextEditingController commentContentController;
-  final List<Comment> comments;
+  final String userName;
+
   final BuildContext context;
   final String postID;
 
@@ -66,7 +66,7 @@ class CommentPopup extends StatelessWidget {
           onPressed: () async {
             Navigator.of(context).pop();
             Comment newComment = new Comment(commentContentController.text,
-                DateTime.now(), 'user123', postID);
+                DateTime.now(), userName, postID);
 
             Map data = {
               'comment': newComment.comment,
