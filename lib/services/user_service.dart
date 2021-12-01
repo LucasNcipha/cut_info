@@ -1,6 +1,11 @@
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:flutter/material.dart';
 
+String _username = "user not found";
+getUsername() {
+  return _username;
+}
+
 class UserService with ChangeNotifier {
   BackendlessUser? _currentUser;
   BackendlessUser? get currentUser => _currentUser;
@@ -53,6 +58,7 @@ class UserService with ChangeNotifier {
     }
     _showUserProgress = false;
     notifyListeners();
+    _username = _currentUser!.getProperty('name');
     return result;
   }
 
@@ -94,6 +100,8 @@ class UserService with ChangeNotifier {
         if (mapOfCurrentUser != null) {
           _currentUser = BackendlessUser.fromJson(mapOfCurrentUser);
           notifyListeners();
+
+          _username = _currentUser!.getProperty('name');
         } else {
           result = 'NOT OK';
         }
