@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:backendless_sdk/backendless_sdk.dart';
 import 'package:cut_info/models/post.dart';
+import 'package:cut_info/services/helper_post.dart';
 import 'package:cut_info/services/helper_user.dart';
 import 'package:cut_info/widgets/create_post_card_alert_dialog.dart';
 import 'package:cut_info/widgets/post_card.dart';
@@ -19,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   late TextEditingController postTitleController;
   late TextEditingController postContentController;
 
-  final List<Posts> posts = List.empty(growable: true);
+  List<Posts> posts = List.empty(growable: true);
   DataQueryBuilder queryBuilder = DataQueryBuilder()..pageSize = 100;
 
   @override
@@ -28,16 +27,9 @@ class _MainPageState extends State<MainPage> {
     postTitleController = TextEditingController();
     postContentController = TextEditingController();
 
-    Backendless.data.of("General").find(queryBuilder).then((tablePosts) {
-      tablePosts!.forEach((element) {
-        setState(() {
-          Posts post = new Posts(element?["title"], element?["content"],
-              element?["hasImage"], element?["created"], element?["objectId"]);
-          posts.add(post);
-        });
-      });
+    recievePosts().then((value) {
       setState(() {
-        posts.sort((a, b) => b.created.compareTo(a.created));
+        posts = value;
       });
     });
   }
@@ -49,9 +41,12 @@ class _MainPageState extends State<MainPage> {
     super.dispose();
   }
 
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Posts'),
@@ -65,33 +60,14 @@ class _MainPageState extends State<MainPage> {
                 context: context,
                 builder: (context) {
                   return CreatePostCard(
-                      postTitleController: postTitleController,
-                      postContentController: postContentController,
-                      context: context);
+                    postTitleController: postTitleController,
+                    postContentController: postContentController,
+                    context: context,
+                  );
                 },
               );
-
-              posts.clear();
-              sleep(Duration(microseconds: 200));
-              await Backendless.data
-                  .of("General")
-                  .find(queryBuilder)
-                  .then((tablePosts) {
-                tablePosts!.forEach((element) {
-                  setState(() {
-                    Posts post = new Posts(
-                        element?["title"],
-                        element?["content"],
-                        element?["hasImage"],
-                        element?["created"],
-                        element?["objectId"]);
-                    posts.add(post);
-                  });
-                });
-
-                setState(() {
-                  posts.sort((a, b) => b.created.compareTo(a.created));
-                });
+              setState(() {
+                recievePosts().then((value) => posts = value);
               });
             },
           ), //end add post
@@ -99,25 +75,8 @@ class _MainPageState extends State<MainPage> {
               icon: Icon(Icons.refresh),
               tooltip: 'Refresh',
               onPressed: () {
-                posts.clear();
-                Backendless.data
-                    .of("General")
-                    .find(queryBuilder)
-                    .then((tablePosts) {
-                  tablePosts!.forEach((element) {
-                    setState(() {
-                      Posts post = new Posts(
-                          element?["title"],
-                          element?["content"],
-                          element?["hasImage"],
-                          element?["created"],
-                          element?["objectId"]);
-                      posts.add(post);
-                    });
-                  });
-                  setState(() {
-                    posts.sort((a, b) => b.created.compareTo(a.created));
-                  });
+                setState(() {
+                  recievePosts().then((value) => posts = value);
                 });
               }), //end refresh button
           IconButton(

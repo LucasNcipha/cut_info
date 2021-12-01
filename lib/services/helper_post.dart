@@ -3,8 +3,8 @@ import 'package:cut_info/models/post.dart';
 import 'package:cut_info/widgets/app_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
-submitPost(TextEditingController postTitleController,
-    TextEditingController postContentController) {
+Future<void> submitPost(TextEditingController postTitleController,
+    TextEditingController postContentController) async {
   AppProgressIndicator(text: 'Creating Post');
 
   Posts newPost = new Posts(postTitleController.text,
@@ -20,5 +20,21 @@ submitPost(TextEditingController postTitleController,
     'created': newPost.created
   };
 
-  Backendless.data.of("General").save(data);
+  await Backendless.data.of("General").save(data);
+}
+
+Future<List<Posts>> recievePosts() async {
+  List<Posts> posts = List.empty(growable: true);
+  DataQueryBuilder queryBuilder = DataQueryBuilder()..pageSize = 100;
+
+  await Backendless.data.of("General").find(queryBuilder).then((tablePosts) {
+    tablePosts!.forEach((element) {
+      Posts post = new Posts(element?["title"], element?["content"],
+          element?["hasImage"], element?["created"], element?["objectId"]);
+      posts.add(post);
+    });
+    posts.sort((a, b) => b.created.compareTo(a.created));
+  });
+
+  return posts;
 }
