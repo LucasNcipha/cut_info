@@ -150,6 +150,7 @@ class _RegisterState extends State<Register> {
                         controller: passwordController,
                         labelText: 'Please enter your password',
                         validate: passwordlValidate),
+                    // password validator in the UI
                     new FlutterPwValidator(
                         width: 300,
                         height: 150,
@@ -159,7 +160,7 @@ class _RegisterState extends State<Register> {
                         controller: passwordController,
                         onSuccess: () {
                           showSnackBar(context, 'Password Validated');
-                        }),
+                        }), // validator end
                     AppTextField(
                         hideText: true,
                         keyboardType: TextInputType.text,

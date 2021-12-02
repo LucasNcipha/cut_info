@@ -30,6 +30,16 @@ void createNewUserInUI(
       context,
       'Please enter all fields!',
     );
+  } else if (password.length < 6) {
+    showSnackBar(
+      context,
+      'Password validation not met!',
+    );
+  } else if (password == password.toUpperCase()) {
+    showSnackBar(
+      context,
+      'Password validation not met!',
+    );
   } else if (password != passwordConfirm) {
     showSnackBar(
       context,
