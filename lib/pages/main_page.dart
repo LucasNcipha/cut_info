@@ -53,6 +53,8 @@ class _MainPageState extends State<MainPage> {
           //add button
           IconButton(
             icon: const Icon(Icons.add),
+            splashColor: Colors.purple,
+            splashRadius: 50,
             tooltip: 'Make a post',
             onPressed: () async {
               await showDialog(
@@ -75,6 +77,8 @@ class _MainPageState extends State<MainPage> {
           ), //end add post
           IconButton(
               icon: Icon(Icons.refresh),
+              splashColor: Colors.purple,
+              splashRadius: 50,
               tooltip: 'Refresh',
               onPressed: () {
                 recievePosts().then((value) {
@@ -85,6 +89,8 @@ class _MainPageState extends State<MainPage> {
               }), //end refresh button
           IconButton(
               icon: Icon(Icons.logout),
+              splashColor: Colors.purple,
+              splashRadius: 50,
               tooltip: 'Logout',
               onPressed: () {
                 logoutUserInUI(context);
