@@ -110,9 +110,17 @@ class _MainPageState extends State<MainPage> {
                         shrinkWrap: true,
                         itemCount: posts.length,
                         itemBuilder: (context, index) {
+                          String postText = posts[index].content;
+                          postText = postText.replaceAll("\n", " ");
+                          if (postText.length > 100) {
+                            postText = postText.substring(0, 100) +
+                                "\nOpen Post to read more!";
+                          }
+
                           return PostCard(
                             postTitle: posts[index].title,
-                            postText: posts[index].content,
+                            postText: postText,
+                            fullPostText: posts[index].content,
                             containsImage: posts[index].hasImage,
                             dateTime: posts[index].created,
                             objectId: posts[index].objectId,

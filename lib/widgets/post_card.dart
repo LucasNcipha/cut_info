@@ -12,13 +12,15 @@ class PostCard extends StatelessWidget {
       {Key? key,
       required this.postTitle,
       required this.postText,
+      required this.fullPostText,
       required this.containsImage,
       required this.dateTime,
       required this.objectId})
       : super(key: key);
 
-  final postTitle;
-  final postText;
+  final String postTitle;
+  final String postText;
+  final String fullPostText;
   final bool containsImage;
   final DateTime dateTime;
   final String objectId;
@@ -36,7 +38,7 @@ class PostCard extends StatelessWidget {
               ),
               settings: RouteSettings(
                 arguments:
-                    Posts(postTitle, postText, false, dateTime, objectId),
+                    Posts(postTitle, fullPostText, false, dateTime, objectId),
               ),
             ),
           );
@@ -62,7 +64,7 @@ class PostCard extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           top: 8, bottom: 8, left: 15, right: 15),
                       child: Text(
-                        "$postText",
+                        postText,
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w600)),
