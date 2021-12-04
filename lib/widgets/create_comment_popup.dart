@@ -25,6 +25,7 @@ class CommentPopup extends StatelessWidget {
 
     AlertDialog commentDialog = AlertDialog(
       backgroundColor: Colors.white,
+      insetPadding: EdgeInsets.only(top: 150, bottom: 250),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -33,14 +34,17 @@ class CommentPopup extends StatelessWidget {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: TextField(
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                controller: commentContentController,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter comment content.'),
+              padding: const EdgeInsets.only(top: 20),
+              child: Container(
+                width: 300,
+                child: TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  controller: commentContentController,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter comment content.'),
+                ),
               ),
             ),
           ),

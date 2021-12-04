@@ -22,11 +22,13 @@ class CreatePostCard extends StatelessWidget {
     /////////////alertDialog//////////
     AlertDialog alertDialog = AlertDialog(
       backgroundColor: Colors.white,
+      insetPadding: EdgeInsets.all(10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
       title: Text('Create a new Post'),
       content: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
           TextField(
             keyboardType: TextInputType.text,
@@ -36,14 +38,17 @@ class CreatePostCard extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: TextField(
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                controller: postContentController,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter Post content.'),
+              padding: const EdgeInsets.only(top: 20),
+              child: Container(
+                width: 320,
+                child: TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  controller: postContentController,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Post content.'),
+                ),
               ),
             ),
           ),
