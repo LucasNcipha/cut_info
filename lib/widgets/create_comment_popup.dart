@@ -39,7 +39,7 @@ class CommentPopup extends StatelessWidget {
                 width: 300,
                 child: TextField(
                   keyboardType: TextInputType.multiline,
-                  maxLines: null,
+                  maxLines: 15,
                   controller: commentContentController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
