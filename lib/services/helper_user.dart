@@ -35,11 +35,6 @@ void createNewUserInUI(
       context,
       'Password validation not met!',
     );
-  } else if (password == password.toUpperCase()) {
-    showSnackBar(
-      context,
-      'Password validation not met!',
-    );
   } else if (password != passwordConfirm) {
     showSnackBar(
       context,
