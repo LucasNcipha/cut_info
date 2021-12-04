@@ -31,6 +31,7 @@ class CreatePostCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           TextField(
+            maxLength: 40,
             keyboardType: TextInputType.text,
             controller: postTitleController,
             decoration: const InputDecoration(
@@ -43,7 +44,7 @@ class CreatePostCard extends StatelessWidget {
                 width: 320,
                 child: TextField(
                   keyboardType: TextInputType.multiline,
-                  maxLines: null,
+                  maxLines: 40,
                   controller: postContentController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
