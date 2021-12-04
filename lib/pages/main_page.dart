@@ -50,7 +50,17 @@ class _MainPageState extends State<MainPage> {
         automaticallyImplyLeading: false,
         title: const Text('Posts'),
         actions: <Widget>[
-          //add button
+          Padding(
+            padding: const EdgeInsets.only(right: 100),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.manage_accounts),
+              splashColor: Colors.purple,
+              splashRadius: 50,
+              tooltip: 'Manage Posts',
+            ),
+          ) //add button
+          ,
           IconButton(
             icon: const Icon(Icons.add),
             splashColor: Colors.purple,
