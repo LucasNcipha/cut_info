@@ -155,6 +155,8 @@ class _RegisterState extends State<Register> {
                         width: 300,
                         height: 150,
                         minLength: 6,
+                        successColor: Colors.green,
+                        failureColor: Colors.purple,
                         uppercaseCharCount: 1,
                         numericCharCount: 2,
                         controller: passwordController,
