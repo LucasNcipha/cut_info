@@ -128,7 +128,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Text(
                         'Dont have an account yet ? ',
                         textAlign: TextAlign.center,
@@ -140,7 +140,7 @@ class _LoginState extends State<Login> {
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.only(bottom: 20),
+                        padding: const EdgeInsets.only(bottom: 10),
                         primary: Colors.lightBlue,
                         textStyle: const TextStyle(fontSize: 20),
                       ),
@@ -150,6 +150,17 @@ class _LoginState extends State<Login> {
                       },
                       child: const Text('Sign up'),
                     ),
+                    TextButton(
+                        style: TextButton.styleFrom(primary: Colors.purple),
+                        onPressed: () async {
+                          resetPasswordInUI(context,
+                              email: emailController.text);
+                        },
+                        child: Text(
+                          'Reset Your Password',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 15),
+                        ))
                   ],
                 ),
               ),
