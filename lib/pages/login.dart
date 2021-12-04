@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40, bottom: 20),
+                      padding: const EdgeInsets.only(top: 40, bottom: 30),
                       child: Text(
                         'Please Enter your email and password ',
                         textAlign: TextAlign.center,
@@ -84,13 +84,17 @@ class _LoginState extends State<Login> {
                         controller: passwordController,
                         labelText: 'Please enter your password',
                         validate: passwordlValidate),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25),
+                          child: Text(
+                            'Keep me logged in',
+                            style: TextStyle(fontStyle: FontStyle.italic),
+                          ),
+                        ),
                         Checkbox(
                             value: autoLogin,
                             onChanged: (bool? value) {
@@ -98,11 +102,10 @@ class _LoginState extends State<Login> {
                                 autoLogin = value!;
                               });
                             }),
-                        Text('Keep me logged in')
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(top: 20, bottom: 10),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -128,7 +131,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20),
+                      padding: const EdgeInsets.only(top: 30),
                       child: Text(
                         'Dont have an account yet ? ',
                         textAlign: TextAlign.center,

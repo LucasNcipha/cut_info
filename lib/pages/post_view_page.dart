@@ -96,7 +96,7 @@ class _PostViewState extends State<PostView> {
                                   children: [
                                     Container(
                                       decoration: BoxDecoration(
-                                          color: Colors.lightBlue.shade400,
+                                          color: Colors.white70,
                                           border: Border.all(
                                               color: Colors.black45,
                                               width: 1.5),
@@ -114,7 +114,7 @@ class _PostViewState extends State<PostView> {
                                             child: Container(
                                               decoration: BoxDecoration(
                                                   border: Border.all(
-                                                      color: Colors.white70),
+                                                      color: Colors.blue),
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(20))),
@@ -128,7 +128,7 @@ class _PostViewState extends State<PostView> {
                                                   child: Text(
                                                     post.title,
                                                     style: TextStyle(
-                                                        fontSize: 20,
+                                                        fontSize: 25,
                                                         fontWeight:
                                                             FontWeight.w700),
                                                   ),
