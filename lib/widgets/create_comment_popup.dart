@@ -23,7 +23,7 @@ class CommentPopup extends StatelessWidget {
 
     AlertDialog commentDialog = AlertDialog(
       backgroundColor: Colors.white,
-      insetPadding: EdgeInsets.only(top: 150, bottom: 250),
+      insetPadding: EdgeInsets.only(top: 20, bottom: 150),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
