@@ -31,9 +31,10 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          width: 150,
+          width: 120,
           child: DropdownButton<String>(
             value: dropdownValue,
             icon: const Icon(
@@ -68,7 +69,7 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
         Padding(
           padding: const EdgeInsets.only(left: 20),
           child: Container(
-            width: 150,
+            width: 73,
             child: DropdownButton<String>(
               value: dropdownValue2,
               icon: const Icon(
