@@ -23,7 +23,6 @@ class CommentPopup extends StatelessWidget {
 
     AlertDialog commentDialog = AlertDialog(
       backgroundColor: Colors.white,
-      insetPadding: EdgeInsets.only(top: 20, bottom: 150),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -70,11 +69,12 @@ class CommentPopup extends StatelessWidget {
             } else {
               Navigator.of(context).pop();
               submitComment(commentContentController.text, postID);
+              commentContentController.clear();
             }
           },
         ),
       ],
     );
-    return commentDialog;
+    return Scaffold(backgroundColor: Colors.lightBlue, body: commentDialog);
   }
 }
