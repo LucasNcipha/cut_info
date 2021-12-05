@@ -33,8 +33,12 @@ void createNewUserInUI(
   } else if (password.length < 6) {
     showSnackBar(
       context,
-      'Password validation not met!',
+      'Password must be atlest 6 characters!',
     );
+  } else if (!password.contains(RegExp(r'[A-Z]'))) {
+    showSnackBar(context, 'Password must contain a capital letter!');
+  } else if (!password.contains(RegExp(r'[0-9]'))) {
+    showSnackBar(context, 'Password must contain a number!');
   } else if (password != passwordConfirm) {
     showSnackBar(
       context,

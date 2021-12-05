@@ -152,17 +152,18 @@ class _RegisterState extends State<Register> {
                         validate: passwordlValidate),
                     // password validator in the UI
                     new FlutterPwValidator(
-                        width: 300,
-                        height: 150,
-                        minLength: 6,
-                        successColor: Colors.green,
-                        failureColor: Colors.purple,
-                        uppercaseCharCount: 1,
-                        numericCharCount: 2,
-                        controller: passwordController,
-                        onSuccess: () {
-                          showSnackBar(context, 'Password Validated');
-                        }), // validator end
+                      width: 300,
+                      height: 150,
+                      minLength: 6,
+                      successColor: Colors.green,
+                      failureColor: Colors.purple,
+                      uppercaseCharCount: 1,
+                      numericCharCount: 1,
+                      controller: passwordController,
+                      onSuccess: () {
+                        showSnackBar(context, 'Password Validated');
+                      },
+                    ), // validator end
                     AppTextField(
                         hideText: true,
                         keyboardType: TextInputType.text,
