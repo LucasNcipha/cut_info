@@ -50,17 +50,17 @@ class _MainPageState extends State<MainPage> {
         automaticallyImplyLeading: false,
         title: const Text('Posts'),
         actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 100),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.manage_accounts),
-              splashColor: Colors.purple,
-              splashRadius: 50,
-              tooltip: 'Manage Posts',
-            ),
-          ) //add button
-          ,
+          //Padding(
+          //padding: const EdgeInsets.only(right: 100),
+          //child:
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.manage_accounts),
+            splashColor: Colors.purple,
+            splashRadius: 50,
+            tooltip: 'Manage Posts',
+          ),
+          //),
           IconButton(
             icon: const Icon(Icons.add),
             splashColor: Colors.purple,
@@ -73,7 +73,7 @@ class _MainPageState extends State<MainPage> {
                   return CreatePostCard(
                     postTitleController: postTitleController,
                     postContentController: postContentController,
-                    context: context,
+                    //context: context,
                   );
                 },
               );
