@@ -9,13 +9,13 @@ class CreatePostCard extends StatelessWidget {
     Key? key,
     required this.postTitleController,
     required this.postContentController,
-    required this.context,
+    //required this.context,
   }) : super(key: key);
 
   final TextEditingController postTitleController;
   final TextEditingController postContentController;
 
-  final BuildContext context;
+  //final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
@@ -74,15 +74,20 @@ class CreatePostCard extends StatelessWidget {
             style: TextStyle(color: Colors.lightBlue.shade400, fontSize: 18),
           ),
           onPressed: () {
-            Navigator.of(context).pop();
-
-            showSnackBar(context, "Creating Post");
-            submitPost(postTitleController, postContentController);
-            showSnackBar(context, "Post created");
+            if (postTitleController.text == '') {
+              showSnackBar(context, 'Please enter a post title!');
+            } else if (postContentController.text == '') {
+              showSnackBar(context, 'Please type the post content!');
+            } else {
+              Navigator.of(context).pop();
+              showSnackBar(context, "Creating Post");
+              submitPost(postTitleController, postContentController);
+              showSnackBar(context, "Post created");
+            }
           },
         ),
       ],
     );
-    return (alertDialog);
+    return alertDialog;
   }
 }
