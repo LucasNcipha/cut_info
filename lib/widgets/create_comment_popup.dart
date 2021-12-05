@@ -1,9 +1,7 @@
-import 'package:backendless_sdk/backendless_sdk.dart';
-import 'package:cut_info/models/comment.dart';
-import 'package:cut_info/services/user_service.dart';
+import 'package:cut_info/services/helper_comment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'app_progress_indicator.dart';
+
 import 'snackbar.dart';
 
 class CommentPopup extends StatelessWidget {
@@ -66,31 +64,17 @@ class CommentPopup extends StatelessWidget {
             'Save',
             style: TextStyle(color: Colors.lightBlue.shade400, fontSize: 18),
           ),
-          onPressed: () async {
-            Navigator.of(context).pop();
-
-            String userName = getUsername();
-
-            Comment newComment = new Comment(commentContentController.text,
-                DateTime.now(), userName, postID);
-
-            Map data = {
-              'comment': newComment.comment,
-              'created': newComment.created,
-              'user': newComment.userName,
-              'postID': newComment.postID
-            };
-
-            Backendless.data.of("Comments").save(data).then((value) {
-              commentContentController.text = '';
-
-              AppProgressIndicator(text: 'Creating Comment');
-              showSnackBar(context, 'Comment Created');
-            });
+          onPressed: () {
+            if (commentContentController.text == '') {
+              showSnackBar(context, 'Please type your comment!');
+            } else {
+              Navigator.of(context).pop();
+              submitComment(commentContentController.text, postID);
+            }
           },
         ),
       ],
     );
-    return (commentDialog);
+    return commentDialog;
   }
 }
