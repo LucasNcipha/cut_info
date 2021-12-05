@@ -66,35 +66,32 @@ class _DropDownStatefulWidgetState extends State<DropDownWidget> {
 /* ...................................
 ................   drop down 1 end 
 ...................................... */
-        Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Container(
-            width: 73,
-            child: DropdownButton<String>(
-              value: dropdownValue2,
-              icon: const Icon(
-                Icons.arrow_downward,
-                color: Colors.black,
-              ),
-              iconSize: 16,
-              elevation: 16,
-              style: TextStyle(color: Colors.black),
-              underline: Container(
-                height: 3,
-                color: Colors.lightBlue.shade400,
-              ),
-              onChanged: (String? newValue) {
-                setState(() {
-                  dropdownValue2 = newValue!;
-                });
-              },
-              items: years.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+        Container(
+          width: 120,
+          child: DropdownButton<String>(
+            value: dropdownValue2,
+            icon: const Icon(
+              Icons.arrow_downward,
+              color: Colors.black,
             ),
+            iconSize: 16,
+            elevation: 16,
+            style: TextStyle(color: Colors.black),
+            underline: Container(
+              height: 3,
+              color: Colors.lightBlue.shade400,
+            ),
+            onChanged: (String? newValue) {
+              setState(() {
+                dropdownValue2 = newValue!;
+              });
+            },
+            items: years.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
           ),
         ),
       ],
