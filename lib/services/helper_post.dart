@@ -29,7 +29,7 @@ Future<List<Posts>> recievePosts() async {
   sleep(Duration(microseconds: 200));
   List<Posts> posts = List.empty(growable: true);
   DataQueryBuilder queryBuilder = DataQueryBuilder()..pageSize = 100;
-
+  queryBuilder.whereClause ="course = '${UserService.currentUser.course}'";
   await Backendless.data.of("General").find(queryBuilder).then((tablePosts) {
     tablePosts!.forEach((element) {
       Posts post = new Posts(element?["title"], element?["content"],
