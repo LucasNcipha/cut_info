@@ -19,7 +19,8 @@ Future<void> submitPost(TextEditingController postTitleController,
     'title': newPost.title,
     'content': newPost.content,
     'hasImage': newPost.hasImage,
-    'created': newPost.created
+    'created': newPost.created,
+    'course': newPost.course
   };
 
   await Backendless.data.of("General").save(data);
