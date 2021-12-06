@@ -15,7 +15,9 @@ class PostCard extends StatelessWidget {
       required this.fullPostText,
       required this.containsImage,
       required this.dateTime,
-      required this.objectId})
+      required this.objectId,
+      required this.course
+      })
       : super(key: key);
 
   final String postTitle;
@@ -24,6 +26,7 @@ class PostCard extends StatelessWidget {
   final bool containsImage;
   final DateTime dateTime;
   final String objectId;
+  final String course;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class PostCard extends StatelessWidget {
               ),
               settings: RouteSettings(
                 arguments:
-                    Posts(postTitle, fullPostText, false, dateTime, objectId),
+                    Posts(postTitle, fullPostText, false, dateTime, objectId, course),
               ),
             ),
           );
